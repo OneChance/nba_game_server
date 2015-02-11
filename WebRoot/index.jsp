@@ -65,9 +65,9 @@
 							
 						</div>
 						<a href="#" class="ai-nav-listitem cur" id="team"><spring:message code="menu_team"/></a>
-						<a href="#" class="ai-nav-listitem" id="market"">球员市场</a>
-						<a href="#" class="ai-nav-listitem" id="rank">排行</a>
-						<a href="#" class="ai-nav-listitem" id="reg">注册</a>
+						<a href="#" class="ai-nav-listitem" id="market""><spring:message code="menu_market"/></a>
+						<a href="#" class="ai-nav-listitem" id="rank"><spring:message code="menu_rank"/></a>
+						<a href="#" class="ai-nav-listitem" id="reg"><spring:message code="menu_reg"/></a>
 					</div>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 			<div class="mid_wrap copyright">
 				<div class="mid_block">
 					<h2>
-						<i>ZHSTART工作室</i>
+						<i>ZHSTART<spring:message code="menu_studio"/></i>
 					</h2>
 					<h3>
 						<i> © 2015-2115 ZHSTART All rights reserved.</i>
