@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="NBA_GAME_SERVER"
+  id="myeclipse.1423559692718"
+  context-root="/NBA_GAME_SERVER"
+  j2ee-spec="6.0"
+  archive="NBA_GAME_SERVER.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
