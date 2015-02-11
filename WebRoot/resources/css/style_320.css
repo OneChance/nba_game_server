@@ -1,0 +1,189 @@
+@charset "utf-8";
+@media only screen and (max-width:460px),
+only screen and (max-device-width:460px)
+{
+
+	
+	.case-nav-items {
+		margin: 0 10px;
+	}
+	
+.case-gallery-wrap .hover-content h2{
+	font-size:18px; 
+}	
+	
+.con_rank_title h2:before { }
+.con_rank_title h2:after { }
+.con_rank_title h3 {font-size:24px; line-height:54px; }
+.con_rank_title h4 {font-size:12px; line-height:18px; }
+.con_rank_title h5 {font-size:12px; line-height:28px; padding: 0 20px; display: block;}
+	
+.minsizeToggle {display:block;}
+.third-w { width:auto;}
+.third-w .iconwrap {display:none;}
+
+.third-big-wrap { text-align:center;}
+.third-big-wrap .third-w {display:none;}
+.third-big-wrap .cur {display:inline-block; float:none;}
+.third-big-wrap .trd-title {white-space:nowrap; word-break:keep-all;}
+.third-big-wrap .trd-detal {white-space:nowrap; word-break:keep-all;}
+.third-w .wrap-group { display:inline-block; white-space:nowrap; word-break:keep-all; margin:0 10px;}
+
+.banner-font-big {font-size:48px;  line-height:48px; }
+
+.title-small {font-size:14px;  display:block; margin: 0 14%; text-align:left;}
+.title-big {font-size:24px; line-height:40px; color:#d30830;}
+
+.ecpadding_1 {padding:24px 0;}
+.ai-nav-wrap {
+	height:48px;
+}
+.ai-banner-wrap {
+	height:208px;
+	/* background:#b0172c url(../images/index-image/small-banner-bg.jpg); 
+	-webkit-background-size:500px 500px;
+	background-size:500px 500px;*/
+}
+.ai-banner-img {
+	display:none;
+}
+
+.ai-carousel-1 { width:auto; margin:0 35px; padding:32px 0 16px 0;}
+.scrollbar { margin-top: 16px;}
+.banner-font-big {font-size:30px; line-height:32px; }
+.banner-font-small {font-size:12px; line-height:16px;}
+
+
+.ai-carousel-prev,
+.ai-carousel-next { width:32px; font-size:32px;}
+
+
+.case-gallery-wrap {
+	height:320px;
+}
+
+.ai-banner-3 .ab3_mb_t1 {top: 20px; font-size:24px;}
+.ab3_mb_img_1 { margin-bottom:-80px;}
+.ai-banner-3 .ab3_mb_t2 {top:52px;}
+.ai-banner-3 .ab3_mb_t2 span,
+.ai-banner-3 .ab3_mb_t2 i {display:inline; margin:0; padding:0; font-size:20px; line-height:normal; background:none; color:#fff;}
+.ai-banner-3 .ab3_mb_t3 {top:96px;}
+.ai-banner-3 .ab3_mb_t3 i {display:none;}
+.ai-banner-3 .ab3_mb_t3 font,
+.ai-banner-3 .ab3_mb_t3  { font-weight:bold; font-size:30px; color:#ffd442;}
+
+
+.ai-banner-5 .ab5_t1 {font-size:20px;}
+.ai-banner-5 .ab5_t2 {font-size:32px;}
+.ai-banner-5 .ab5_t3 {font-size:18px;}
+.ai-banner-5 .ab5_t3 em {font-size: 12px;}
+
+.call-us a { font-size:22px; line-height:normal; padding-top:12px; padding-bottom:12px;}
+.call-us a i { line-height:28px; display:inline-block;}
+.call-us a i:first-child { line-height:28px; display:inline-block;font-family:\5FAE\8F6F\96C5\9ED1; }
+
+.contact-index {margin:auto 10px;}
+.contact-index .ct-icons:before {display:none;}
+
+.copyright { padding-top:20px; padding-bottom:20px;}
+.copyright h2 { font-size:18px;}
+.copyright h2 i {display:block;}
+.copyright h3 i {display:none;}
+
+.ai-banner-0 .ai-banner-font {
+    background-image: url(../images/index-image/noti-320.jpg);
+}    
+
+
+@-webkit-keyframes trdfontEffect {
+	from { opacity:0; -webkit-transform:translateX(100px) translateZ(0); transform:translateX(100px) translateZ(0);  }
+	to { opacity:1; -webkit-transform:translateX(0) translateZ(0); transform:translateX(0) translateZ(0); }
+}
+@keyframes trdfontEffect {
+	from { opacity:0; -webkit-transform:translateX(100px) translateZ(0); transform:translateX(100px) translateZ(0);  }
+	to { opacity:1; -webkit-transform:translateX(0) translateZ(0); transform:translateX(0) translateZ(0); }
+}
+
+#index_serve .third-big-wrap .cur {}
+#index_serve .third-big-wrap .cur .trd-title {
+	-webkit-animation: trdfontEffect;
+	animation: trdfontEffect;
+	-webkit-animation-fill-mode: backwards;
+	animation-fill-mode: backwards;
+	-webkit-animation-duration: .4s;
+	animation-duration: .4s;
+	-webkit-animation-timing-function:cubic-bezier(.47, .95, 0, 1); /* Old webkit */
+	-webkit-animation-timing-function:cubic-bezier(.47, .95, 0, 1.47);
+	animation-timing-function:cubic-bezier(.47, .95, 0, 1.47);
+}
+	
+#index_serve .third-big-wrap .cur p {
+	-webkit-animation: trdfontEffect;
+	animation: trdfontEffect;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-duration: .4s;
+	animation-duration: .4s;
+	-webkit-animation-timing-function:cubic-bezier(.47, .95, 0, 1); /* Old webkit */
+	-webkit-animation-timing-function:cubic-bezier(.47, .95, 0, 1.47);
+	animation-timing-function:cubic-bezier(.47, .95, 0, 1.47);	
+}
+
+#index_serve .third-big-wrap .cur p:nth-child(1) {
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s
+}
+#index_serve .third-big-wrap .cur p:nth-child(2) {
+	-webkit-animation-delay: 0.3s;
+	animation-delay: 0.3s
+}
+#index_serve .third-big-wrap .cur p:nth-child(3) {
+	-webkit-animation-delay: 0.4s;
+	animation-delay: 0.4s
+}
+#index_serve .third-big-wrap .cur p:nth-child(4) {
+	-webkit-animation-delay: 0.5s;
+	animation-delay: 0.5s
+}
+	
+.flow-case-con {}
+.case-sprit-line {display: none;}
+.flow-case-con .sprows:before,
+.flow-case-con .sprows:after { content: ""; display: table; font-size:0 !important; line-height:0!important; height:0!important;}  
+.flow-case-con .sprows:after { clear: both; }  
+.flow-case-con .sprows {
+	*zoom: 1;
+	float:none;
+	width:auto;
+	padding:10px 10px;
+	border-bottom:  dashed 1px #e6e6e6;
+}
+	
+.flow-case-con .spricon {float: left;}	
+.flow-case-con .sprdetal{text-align: left; margin-left: 48px;}	
+.flow-case-con .trd-title { margin: 0 10px;font-size: 20px;line-height: 32px;}	
+.flow-case-con .trd-detal p {font-size: 14px; line-height: 24px;}	
+.flow-case-con .circle-icon { width: 46px; height: 46px; font-size: 24px; line-height: 46px; color: #ccc; border-color: #ccc;}	
+	
+}
+
+
+@media only screen and (max-width:360px),
+only screen and (max-device-width:360px)
+{
+	.title-small {margin: 0 5%;}
+	.contact-index .ct-addr .minsize-hide,
+	.contact-index .ct-taxi .minsize-hide,
+	.contact-index .ct-subway .minsize-hide { display:none;}
+	.magicwall .magicwall-grid>li.magicwall-loading>.magicwall-wrap:before {
+		width: 150px;
+		height: 32px;
+		line-height:32px; 
+		font-size: 24px;
+	}
+	
+	.case-nav-items {
+		margin: 0 4px;
+	}
+
+}

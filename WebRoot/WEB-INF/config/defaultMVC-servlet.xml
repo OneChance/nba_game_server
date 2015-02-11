@@ -21,16 +21,19 @@
 			<value>/WEB-INF/config/system.properties</value>
 		</property>
 	</bean>
+
 	<mvc:resources mapping="/resources/**" location="/resources/"
 		cache-period="${cache_period}" />
-	<!-- 
+
+	
+
 	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class=""></bean>
-		</mvc:interceptor>
+		<!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 	</mvc:interceptors>
-	 -->
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />

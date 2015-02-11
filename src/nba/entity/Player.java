@@ -1,9 +1,16 @@
 package nba.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "player_data")
 public class Player {	
 	
+	@Id
 	private String player_id;
+	
 	private String player_name;
 	private String pos;//位置
 	private int sal;//工资

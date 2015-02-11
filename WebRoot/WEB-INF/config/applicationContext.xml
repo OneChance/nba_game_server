@@ -22,7 +22,7 @@
 	</bean>
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass">
-			<value>oracle.jdbc.driver.OracleDriver</value>
+			<value>${db_driver}</value>
 		</property>
 		<property name="jdbcUrl" value="${db_url}" />
 		<property name="user" value="${db_username}" />
@@ -38,12 +38,12 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="erp" />
+		<property name="packagesToScan" value="nba" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 			</props>
 		</property>
 	</bean>
@@ -62,4 +62,10 @@
 			<tx:method name="*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!-- 国际化信息所在的文件名 -->
+		<property name="basename" value="messages" />
+	</bean>
 </beans>

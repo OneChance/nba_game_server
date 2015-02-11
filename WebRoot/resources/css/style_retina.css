@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+/* 视网膜显示屏CSS */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 2) {
+
+@font-face {
+	font-family: 'font-icons';
+	src:url('../fonts/font-icons.eot');
+	src:url('../fonts/font-icons.eot') format('embedded-opentype'),
+		/* url('../fonts/font-icons.svg') format('svg'),
+		url('../fonts/font-icons.woff') format('woff'), */
+		url('../fonts/font-icons.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.blog-page-toggle { background-image:url(../images/retina/pagebtn-1.gif); background-size:80px; -webkit-background-size:80px;}
+.ab5_chart_3 .inchart_1 { background-image:url(../images/index-image/biggest-banner-bg-5-item-1@2x.png);
+	-webkit-background-size: 224px 110px;
+	background-size: 224px 110px;
+}
+.ab5_chart_3 .inchart_2 { background-image:url(../images/index-image/biggest-banner-bg-5-item-2@2x.png);
+	-webkit-background-size: 224px 110px;
+	background-size: 224px 110px;
+}
+
+.ai-nav-list:before {
+	background-image: url(../images/retina/min-side-bar-shadow.png);
+}
+
+
+
+}
