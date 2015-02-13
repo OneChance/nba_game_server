@@ -30,6 +30,11 @@
 	<mvc:interceptors>
 		<!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="nba.filter.GlobalFilter"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />

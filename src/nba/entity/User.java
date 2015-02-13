@@ -18,6 +18,15 @@ public class User {
 	private String user_name;
 	private String password;
 	
+	public User(){
+		
+	}
+	
+	public User(String user_name,String password){
+		this.user_name = user_name;
+		this.password = password;
+	}
+	
 	public Long getId() {
 		return id;
 	}

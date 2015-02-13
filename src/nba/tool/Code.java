@@ -7,4 +7,6 @@ public class Code {
 	public static String PASSWORDNULL = "passwordnull";
 	public static String ACCOUNTEXIST = "accountexist";
 	public static String CHANGELOCALOK = "changelocalok";
+	
+	public static String LOGINERROR = "loginerror";
 }

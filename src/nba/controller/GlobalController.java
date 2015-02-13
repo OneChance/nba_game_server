@@ -1,45 +1,39 @@
 package nba.controller;
 
-import java.util.Locale;
-
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import nba.service.GlobalService;
 import nba.tool.Code;
 import nba.tool.JsonTool;
+import nba.tool.WebUtil;
 
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.springframework.web.servlet.support.RequestContext;
 
 @Controller
 @RequestMapping("/global")
 public class GlobalController {
+	
+	@RequestMapping
+	public String global(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+
+		return "index";
+	}
 
 	@RequestMapping("/changeLocal/")
-	public void login(HttpServletRequest request, HttpServletResponse response)
+	public void changeLocal(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
 		String local = request.getParameter("local");
-
-		if (local.equals("zh")) {
-			Locale locale = new Locale("zh", "CN");
-			request.getSession()
-					.setAttribute(
-							SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,
-							locale);
-		} else if (local.equals("en")) {
-			Locale locale = new Locale("en", "US");
-			request.getSession()
-					.setAttribute(
-							SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,
-							locale);
-		} else
-			request.getSession().setAttribute(
-					SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,
-					LocaleContextHolder.getLocale());
-
+		WebUtil.setCookies(response, "nbagame_lan", local);	
+		
 		JsonTool.getJson(Code.CHANGELOCALOK).write(response);
 	}
+	
+	@Resource
+	private GlobalService globalService;
 }

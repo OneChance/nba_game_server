@@ -66,7 +66,9 @@
 						</div>
 						<a href="#" class="ai-nav-listitem cur" id="team"><spring:message code="menu_team"/></a>
 						<a href="#" class="ai-nav-listitem" id="market""><spring:message code="menu_market"/></a>
+						<!-- 
 						<a href="#" class="ai-nav-listitem" id="rank"><spring:message code="menu_rank"/></a>
+						 -->
 						<a href="#" class="ai-nav-listitem" id="reg"><spring:message code="menu_reg"/></a>
 					</div>
 				</div>

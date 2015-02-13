@@ -1,42 +1,68 @@
 
-function check() {
-
-    var user_name = jQuery("#user_name").val();
+function reg(namenull,needpassword){
+	
+	var user_name = jQuery("#user_name").val();
     var password = jQuery("#password").val();
     
-    if (!name) {
-        alert("请输入账号!");
+    if (!user_name) {
+        alert(namenull);
         jQuery("#user_name").focus();
         return false;
     }
 
     else if (!password) {
-        alert("请输入密码")
+        alert(needpassword)
         jQuery("#password").focus();
         return false;
     }
-  
-    else {
-        jQuery.ajax({
-            type: "POST",
-            url: "/interface/contact.aspx",
-            data: { txtname: jQuery("#txtname").val(), txtCompany: jQuery("#txtCompany").val(), txtemail: jQuery("#txtemail").val(), txtContent: jQuery("#txtContent").val(), tel: tel, qq: qq },
-            cache: false,
-            success: function (msg) {
-                if (msg == 1) {
-                    alert("留言信息已提交成功!");
-
-                    jQuery("#txtname").val("");
-                    jQuery("#txtContent").val("");
-                    jQuery("#txtemail").val("");
-                    jQuery("#txttel").val("");
-                }
-                else
-                    alert(msg);
-
+	
+    jQuery.ajax({
+        type: "POST",
+        url: "account/register/",
+        data: { user_name: user_name, password: password},
+        cache: false,
+        success: function (json) {
+            if(json.message != ''){
+            	alert(json.message);       	
+            }else{
+            	//跳转到我的球队去登陆
+            	jQuery("#team").click();
             }
-        })
+        }
+    });
+}
+
+function login(namenull,needpassword){
+	
+	var user_name = jQuery("#user_name").val();
+    var password = jQuery("#password").val();
+    
+    if (!user_name) {
+        alert(namenull);
+        jQuery("#user_name").focus();
+        return false;
     }
+
+    else if (!password) {
+        alert(needpassword)
+        jQuery("#password").focus();
+        return false;
+    }
+	
+    jQuery.ajax({
+        type: "POST",
+        url: "account/login/",
+        data: { user_name: user_name, password: password},
+        cache: false,
+        success: function (json) {
+            if(json.message != ''){
+            	alert(json.message);       	
+            }else{
+            	//刷新我的球队页面
+            	jQuery("#team").click();
+            }
+        }
+    });
 }
 
 function oncase(nodeid) {
@@ -82,58 +108,4 @@ function oncase(nodeid) {
             target_magic.magicWall(options);
         });
     });
-}
-
-$(function () {    
-    $(".ai-banner-1").click(function () { location.href = "/about/us.html"; });
-    $(".ai-banner-2").click(function () { location.href = "/service/weixin.html"; });
-    $(".ai-banner-3").click(function () { location.href = "/service/mobile.html"; });
-    $(".ai-banner-4").click(function () { location.href = "/service/3d.html"; });
-    $(".ai-banner-5").click(function () { location.href = "/service/chart.html"; });
-
-    $(".count-wrap").click(function () { location.href = "/about/us.html"; });
-
-    //$(".si-qq").click(function () {
-    //    window.open('http://b.qq.com/webc.htm?new=0&sid=4000218655&eid=218808P8z8p8p8R8z8q8p&o=www.adinnet.cn&q=7&ref=' + document.location, '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');
-    //    window.opener = null; window.close();
-    //});
-
-    //var useragent = navigator.userAgent;
-    //var ipad = /ipad/i.test(useragent);
-    //var webkit = /applewebkit/i.test(useragent);
-    //var firefox = /firefox/i.test(useragent);
-    //var ios = /ipad|ipod|iphone/i.test(useragent);
-    //var mao = location.hash.replace("#","");
-    //var targetNav = $(".ai-nav-list");
-    //var scrollelem = (function () {
-    //    if (webkit === true) {
-    //        return $("body")
-    //    } else if (firefox === true) {
-    //        return $("html")
-    //    } else {
-    //        return $("html")
-    //    }
-    //})();
-
-    //if ($this.hasClass("cur")) { return false; }
-    //var idx = mao;
-    //var idx_head_height = targetNav[0].clientHeight;
-    //var sct = document.getElementById(idx).offsetTop;
-    //alert(sct + "===" + document.getElementById("index_blog").offsetTop);
-    //var _easing = "";
-    //if (sct >= 800) {
-    //    _easing = "easeOutExpo";
-    //} else {
-    //    _easing = "swing";
-    //}
-    //scrollelem.animate({
-    //    "scrollTop": sct - idx_head_height
-    //}, 300);
-});
-
-function loadM() {
-
-   // var $this = $("#" + mao + "1");
-    alert(1);
-    // $this.click();
 }

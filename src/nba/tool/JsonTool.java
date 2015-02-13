@@ -96,7 +96,7 @@ public class JsonTool implements Serializable {
 			this.data = data;
 		}
 		if (success) {
-			message = "操作成功";
+			message = "";
 		}
 		this.success = success;
 		this.message = message;
