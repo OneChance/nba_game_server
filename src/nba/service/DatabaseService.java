@@ -196,7 +196,7 @@ public class DatabaseService {
 		if (list.size() == 1) {
 			return list.get(0);
 		}
-		throw new Exception("结果不止一条数据，不能使用get");
+		throw new Exception("error");
 	}
 
 	/**

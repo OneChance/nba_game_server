@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="container">
-	<div class="feedback-index">
+	<div class="feedback-index fi-center">
 		<form>
 			<div class="fb-rows">
 				<input id="user_name" class="fb-ipt" placeholder="<spring:message code="user_name"/>:" type="text">

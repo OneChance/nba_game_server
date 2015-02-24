@@ -8,61 +8,31 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "game_data")
-public class GameData {	
-	
+public class GameData {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	//球员
-	private String  player_id;
-	private String player_name;
-	
-	//上场时间
-	private String  game_time;
-	
-	//投篮	
-	private String shoot;
-	
-	//三分	
-	private String point3;
-	
-	//罚球	
-	private String free_throw;
-	
-	//前篮板	
-	private String  rebound_front;
-	
-	//后篮板	
-	private String rebound_back;
 
-	//总篮板	
+	private String player_id;
+	private String player_name;
+	private String game_time;
+
+	private String shoot;
+	private String point3;
+	private String free_throw;
+	private String rebound_front;
+	private String rebound_back;
 	private String rebound;
-	
-	//助攻	
 	private String assist;
-	
-	//抢断	
 	private String steal;
-	
-	//盖帽	
 	private String block;
-	
-	//失误	
 	private String fault;
-	
-	//犯规	
 	private String foul;
-	
-	//得分
 	private String point;
-	
-	//效率值
 	private int ev;
-	
-	//工资
 	private int sal;
-	
+
 	private String game_date;
 
 	public String getGame_date() {
@@ -216,6 +186,5 @@ public class GameData {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
+
 }

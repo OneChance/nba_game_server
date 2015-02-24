@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nba.entity.Team;
 import nba.entity.User;
 import nba.service.AccountService;
+import nba.service.GameService;
 import nba.tool.Code;
 import nba.tool.JsonTool;
 import nba.tool.Message;
@@ -38,7 +40,9 @@ public class AccountController {
 			jt.setMessage(Message.getMessage(request, res));
 		} else {
 			WebUtil.setCookies(response, "loginuid", user.getId().toString());
-			request.getSession().setAttribute("loginu", user);
+			request.getSession().setAttribute("loginu", user);		
+			Team team = gameService.getTeamByUser(user);
+			request.getSession().setAttribute("team", team);
 		}
 
 		jt.write(response);
@@ -78,4 +82,6 @@ public class AccountController {
 
 	@Resource
 	private AccountService accountService;
+	@Resource
+	private GameService gameService;
 }

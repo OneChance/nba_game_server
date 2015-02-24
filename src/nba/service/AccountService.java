@@ -1,60 +1,68 @@
 package nba.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 
 import nba.entity.User;
 import nba.tool.Code;
 
-
 @Service
 public class AccountService extends DatabaseService {
 
-	//验证账号有效性
-	public String checkAccount(User user) throws Exception{
-		
-		//规则验证
-		if(user.getUser_name()==null||user.getUser_name().equals("")){
+	public String checkAccount(User user) throws Exception {
+
+		if (user.getUser_name() == null || user.getUser_name().equals("")) {
 			return Code.NAMENULL;
 		}
-		if(user.getPassword()==null||user.getPassword().equals("")){
+		if (user.getPassword() == null || user.getPassword().equals("")) {
 			return Code.PASSWORDNULL;
 		}
-	
-		//存在验证
-		User user_db = this.get(User.class, "select * from user where user_name=?", new String[]{user.getUser_name()});
-		
-		if(user_db!=null){
+
+		// 瀛樺湪楠岃瘉
+		User user_db = this.get(User.class,
+				"select * from user where user_name=?",
+				new String[] { user.getUser_name() });
+
+		if (user_db != null) {
 			return Code.ACCOUNTEXIST;
-		}else{
+		} else {
 			this.save(user);
 		}
-		
+
 		return Code.REGOK;
 	}
-	
-	public String checkLogin(User user) throws Exception{
-		//规则验证
-		if(user.getUser_name()==null||user.getUser_name().equals("")){
+
+	public String checkLogin(User user) throws Exception {
+
+		if (user.getUser_name() == null || user.getUser_name().equals("")) {
 			return Code.NAMENULL;
 		}
-		if(user.getPassword()==null||user.getPassword().equals("")){
+		if (user.getPassword() == null || user.getPassword().equals("")) {
 			return Code.PASSWORDNULL;
 		}
-		
-		//存在验证
-		User user_db = this.get(User.class, "select * from user where user_name=? and password=?", new String[]{user.getUser_name(),user.getPassword()});
-		
-		if(user_db==null){
+
+		User user_db = this.get(User.class,
+				"select * from user where user_name=? and password=?",
+				new String[] { user.getUser_name(), user.getPassword() });
+
+		if (user_db == null) {
 			return Code.LOGINERROR;
-		}else{
-			user = user_db;
-		}	
-		
+		} else {
+			user.setId(user_db.getId());
+		}
+
 		return Code.LOGINOK;
 	}
-	
-	public User getUser(String userid) throws NumberFormatException, Exception{
+
+	public User getUser(String userid) throws NumberFormatException, Exception {
 		User user = this.get(User.class, Long.parseLong(userid));
+		return user;
+	}
+
+	public User getLoginUser(HttpServletRequest request)
+			throws NumberFormatException, Exception {
+		User user = (User) request.getSession().getAttribute("loginu");
 		return user;
 	}
 }

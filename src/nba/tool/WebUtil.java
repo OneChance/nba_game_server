@@ -109,13 +109,13 @@ public class WebUtil {
 		if (regex("Opera", userAgent))
 			return OPERA;
 		if (regex("Chrome", userAgent))
-			return "谷歌浏览器";
+			return "Chrome";
 		if (regex("Firefox", userAgent))
 			return FIREFOX;
 		if (regex("Safari", userAgent))
 			return SAFARI;
 		if (regex("360SE", userAgent))
-			return "360浏览器";
+			return "360SE";
 		if (regex("GreenBrowser", userAgent))
 			return GREEN;
 		if (regex("QQBrowser", userAgent))

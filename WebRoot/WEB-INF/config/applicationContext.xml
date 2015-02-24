@@ -62,10 +62,43 @@
 			<tx:method name="*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
-	
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<!-- 国际化信息所在的文件名 -->
 		<property name="basename" value="messages" />
+	</bean>
+
+	<bean name="evCal" class="nba.service.GameService" />
+
+	<bean id="methodInvokingJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="evCal" />
+		</property>
+		<property name="targetMethod">
+			<value>EvCal</value>
+		</property>
+	</bean>
+	<!-- 配置触发器 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+		<property name="jobDetail">
+			<ref bean="methodInvokingJobDetail" />
+		</property>
+		<!-- 每天的8点到21点每隔1分钟触发，具体说明见附录 -->
+		<property name="cronExpression">
+			<value>0 50 14 ? * *</value>
+		</property>
+
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<!-- 添加触发器 -->
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"/>
+			</list>
+		</property>
 	</bean>
 </beans>

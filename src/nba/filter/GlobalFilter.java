@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nba.entity.Team;
 import nba.entity.User;
 import nba.service.AccountService;
+import nba.service.GameService;
 import nba.tool.WebUtil;
 
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -49,15 +51,24 @@ public class GlobalFilter implements HandlerInterceptor {
 			}
 		}
 
-		// 登陆状态设置
 		User user = (User) request.getSession().getAttribute("loginu");
 
 		if (null == user) {
+
 			String userid = WebUtil.getCookies(request, "loginuid");
 
 			if (null != userid && !userid.equals("")) {
-				request.getSession().setAttribute("loginu",
-						accountService.getUser(userid));
+
+				user = accountService.getUser(userid);
+
+				request.getSession().setAttribute("loginu", user);
+
+				Team team = (Team) request.getSession().getAttribute("team");
+
+				if (team == null) {
+					team = gameService.getTeamByUser(user);
+					request.getSession().setAttribute("team", team);
+				}
 			}
 		}
 
@@ -97,5 +108,7 @@ public class GlobalFilter implements HandlerInterceptor {
 
 	@Resource
 	private AccountService accountService;
+	@Resource
+	private GameService gameService;
 
 }

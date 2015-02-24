@@ -3,58 +3,161 @@ package nba.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "player_data")
-public class Player {	
-	
+public class Player {
+
 	@Id
-	private String player_id;
-	
+	private Long player_id;
+
 	private String player_name;
-	private String pos;//位置
-	private int sal;//工资
+	private String pos;// 位置
+	private int sal;// 工资
 	private String img_src;
-	
-	private String download_src;
+
+	@Transient
+	private String shoot;
+	@Transient
+	private String free_throw;
+	@Transient
+	private String rebound;
+	@Transient
+	private String assist;
+	@Transient
+	private String steal;
+	@Transient
+	private String block;
+	@Transient
+	private String fault;
+	@Transient
+	private String foul;
+	@Transient
+	private String point;
+	@Transient
+	private Integer ev;
+
+	public Integer getEv() {
+		return ev;
+	}
+
+	public void setEv(Integer ev) {
+		if (ev == null)
+			ev = 0;
+		this.ev = ev;
+	}
 
 	public String getImg_src() {
 		return img_src;
 	}
+
 	public void setImg_src(String img_src) {
 		this.img_src = img_src;
 	}
-	public String getDownload_src() {
-		return download_src;
-	}
-	public void setDownload_src(String download_src) {
-		this.download_src = download_src;
-	}
-	
-	public String getPlayer_id() {
+
+	public Long getPlayer_id() {
 		return player_id;
 	}
-	public void setPlayer_id(String player_id) {
+
+	public void setPlayer_id(Long player_id) {
 		this.player_id = player_id;
 	}
 
 	public String getPlayer_name() {
 		return player_name;
 	}
+
 	public void setPlayer_name(String player_name) {
 		this.player_name = player_name;
 	}
+
 	public String getPos() {
 		return pos;
 	}
+
 	public void setPos(String pos) {
 		this.pos = pos;
 	}
+
 	public int getSal() {
 		return sal;
 	}
+
 	public void setSal(int sal) {
 		this.sal = sal;
+	}
+
+	public String getShoot() {
+		return shoot;
+	}
+
+	public void setShoot(String shoot) {
+		this.shoot = shoot;
+	}
+
+	public String getFree_throw() {
+		return free_throw;
+	}
+
+	public void setFree_throw(String free_throw) {
+		this.free_throw = free_throw;
+	}
+
+	public String getRebound() {
+		return rebound;
+	}
+
+	public void setRebound(String rebound) {
+		this.rebound = rebound;
+	}
+
+	public String getAssist() {
+		return assist;
+	}
+
+	public void setAssist(String assist) {
+		this.assist = assist;
+	}
+
+	public String getSteal() {
+		return steal;
+	}
+
+	public void setSteal(String steal) {
+		this.steal = steal;
+	}
+
+	public String getBlock() {
+		return block;
+	}
+
+	public void setBlock(String block) {
+		this.block = block;
+	}
+
+	public String getFault() {
+		return fault;
+	}
+
+	public void setFault(String fault) {
+		this.fault = fault;
+	}
+
+	public String getFoul() {
+		return foul;
+	}
+
+	public void setFoul(String foul) {
+		this.foul = foul;
+	}
+
+	public String getPoint() {
+		return point;
+	}
+
+	public void setPoint(String point) {
+		this.point = point;
 	}
 
 }

@@ -1,6 +1,3 @@
-jQuery(function(){
-	$("#mainframe").load("game/myteam/");
-});
 
 jQuery(".ai-nav-listitem").click(function() {
 
@@ -12,18 +9,17 @@ jQuery(".ai-nav-listitem").click(function() {
 
 });
 
-jQuery("#reg").click(function() {
-	$("#mainframe").load("account/reg/");
+
+jQuery(".options a").click(function() {
+	alert('xxx')
+	jQuery(".options li a").each(function() {
+		jQuery(this).removeClass("active");
+	});
+
+	jQuery(this).addClass("active");
+
 });
 
-jQuery("#team").click(function() {
-	$("#mainframe").load("game/myteam/");
-});
 
-jQuery("#market").click(function() {
-	$("#mainframe").load("game/market/");
-});
 
-jQuery("#rank").click(function() {
-	$("#mainframe").load("game/rank/");
-});
+

@@ -5,6 +5,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -18,6 +19,18 @@ public class User {
 	private String user_name;
 	private String password;
 	
+	@Transient
+	private Team team;
+	
+	
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
 	public User(){
 		
 	}
