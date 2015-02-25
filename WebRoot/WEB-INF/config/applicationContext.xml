@@ -107,7 +107,7 @@
 		<property name="jobDetail">
 			<ref bean="gameDataGetJob" />
 		</property>
-		<!-- ev 结算时间 -->
+	
 		<property name="cronExpression">
 			<value>0 30 14 ? * *</value>
 		</property>

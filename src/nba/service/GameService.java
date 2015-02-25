@@ -1,14 +1,19 @@
 package nba.service;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-
 import nba.entity.GameData;
 import nba.entity.Player;
 import nba.entity.Team;
@@ -17,6 +22,8 @@ import nba.tool.Code;
 
 @Service
 public class GameService extends DatabaseService {
+
+	public static int SAL_RATIO = 1;
 
 	public Team getTeamByUser(User user) throws Exception {
 		return this.get(Team.class, "select * from team where user_id=?",
@@ -274,6 +281,147 @@ public class GameService extends DatabaseService {
 	}
 
 	public void GameDataGet() throws Exception {
-		
+		Document doc = Jsoup
+				.connect("http://nba.sports.sina.com.cn/match_result.php?dpc=1")
+				.timeout(0).get();
+		Elements trs = doc.select("#table980middle tr");
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_YEAR, -1);
+
+		String today = new SimpleDateFormat("yyyyMMdd").format(calendar
+				.getTime());
+		String game_date = new SimpleDateFormat("yyyy-MM-dd")
+				.format(new Date());
+
+		List<GameData> gdList = new ArrayList<GameData>();
+		List<Player> updatePlayerList = new ArrayList<Player>();
+		List<Player> pList = this.getPlayerByCondition("");
+
+		Map<String, Player> playerMap = new HashMap<String, Player>();
+
+		for (Player p : pList) {
+			playerMap.put(p.getPlayer_id().toString(), p);
+		}
+
+		for (Element tr : trs) {
+			Elements tds = tr.select("td");
+
+			String href = tds.get(8).select("a").attr("href");
+
+			String id = getIdFromUrl(href);
+
+			if (id.contains(today)) {
+				// 单个比赛统计
+				Document one_game = Jsoup
+						.connect("http://nba.sports.sina.com.cn/" + href)
+						.timeout(0).get();
+				Elements all_tr = one_game.select("#main tr");
+
+				for (Element one_player : all_tr) {
+
+					if (one_player.select("td").size() == 14) {
+						// 14列 球员该场数据
+						Elements game_datas = one_player.select("td");
+
+						String player_id = getIdFromUrl(game_datas.get(0)
+								.select("a").attr("href"));
+						String player_name = game_datas.get(0).select("a")
+								.html();
+						String game_time = game_datas.get(1).html();
+						String shoot = game_datas.get(2).html();
+						String point3 = game_datas.get(3).html();
+						String free_throw = game_datas.get(4).html();
+						String rebound_front = game_datas.get(5).html();
+						String rebound_back = game_datas.get(6).html();
+						String rebound = game_datas.get(7).html();
+						String assist = game_datas.get(8).html();
+						String steal = game_datas.get(9).html();
+						String block = game_datas.get(10).html();
+						String fault = game_datas.get(11).html();
+						String foul = game_datas.get(12).html();
+						String point = game_datas.get(13).html();
+
+						if (!player_id.equals("")) {
+							GameData gd = new GameData();
+							gd.setPlayer_id(player_id);
+							gd.setPlayer_name(player_name);
+							gd.setGame_time(game_time);
+							gd.setShoot(shoot);
+							gd.setPoint3(point3);
+							gd.setFree_throw(free_throw);
+							gd.setRebound_front(rebound_front);
+							gd.setRebound_back(rebound_back);
+							gd.setRebound(rebound);
+							gd.setAssist(assist);
+							gd.setSteal(steal);
+							gd.setBlock(block);
+							gd.setFault(fault);
+							gd.setFoul(foul);
+							gd.setPoint(point);
+							gd.setGame_date(game_date);
+
+							// 计算效率值
+							Player player = playerMap.get(player_id);
+							setEV(gd, player);
+
+							updatePlayerList.add(player);
+							gdList.add(gd);
+						}
+					}
+				}
+			}
+		}
+
+		System.out.println("开始保存");
+		this.merge(gdList);
+		this.merge(updatePlayerList);
+		System.out.println("保存成功");
+	}
+
+	private void setEV(GameData gd, Player player) {
+
+		// (得分+篮板+助攻+抢断+封盖)-(出手次数-命中次数)-(罚球次数-罚球命中次数)-失误次数]
+		BigDecimal point = new BigDecimal(gd.getPoint());
+		BigDecimal rebound = new BigDecimal(gd.getRebound());
+		BigDecimal assist = new BigDecimal(gd.getAssist());
+		BigDecimal steal = new BigDecimal(gd.getSteal());
+		BigDecimal block = new BigDecimal(gd.getBlock());
+
+		BigDecimal shoot_out = new BigDecimal(gd.getShoot().split("-")[1]);
+		BigDecimal shoot_in = new BigDecimal(gd.getShoot().split("-")[0]);
+		BigDecimal throw_out = new BigDecimal(gd.getFree_throw().split("-")[1]);
+		BigDecimal throw_in = new BigDecimal(gd.getFree_throw().split("-")[0]);
+
+		BigDecimal fault = new BigDecimal(gd.getFault());
+
+		int ev_d = point.add(rebound).add(assist).add(steal).add(block)
+				.subtract(shoot_out).add(shoot_in).subtract(throw_out)
+				.add(throw_in).subtract(fault).intValue();
+
+		ev_d = new BigDecimal(ev_d).multiply(new BigDecimal(SAL_RATIO))
+				.intValue();
+
+		gd.setEv(ev_d);
+
+		if (player == null) {
+			System.out.println(gd.getPlayer_name() + "[" + gd.getPlayer_id()
+					+ "] 系统无该球员数据");
+		} else {
+
+			int sal = new BigDecimal(player.getSal()).add(new BigDecimal(ev_d))
+					.intValue();
+
+			player.setSal(sal);
+		}
+
+	}
+
+	private String getIdFromUrl(String url) {
+		int start = url.indexOf("=") + 1;
+
+		String id = url.substring(start, url.length());
+
+		return id;
 	}
 }
