@@ -27,7 +27,7 @@ public class GlobalFilter implements HandlerInterceptor {
 		response.setCharacterEncoding("UTF-8");
 
 		if (this.isResources(handlerMethod)) {
-
+			
 		}
 
 		String local = WebUtil.getCookies(request, "nbagame_lan");

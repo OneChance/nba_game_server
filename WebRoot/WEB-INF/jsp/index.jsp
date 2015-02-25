@@ -79,10 +79,10 @@
 		<div class="mid_wrap copyright">
 			<div class="mid_block">
 				<h2>
-					<i>ZHSTART<spring:message code="menu_studio" /></i>
+					<i>ZHSTAR<spring:message code="menu_studio" /></i>
 				</h2>
 				<h3>
-					<i> © 2015-2115 ZHSTART All rights reserved.</i>
+					<i> © 2015-2115 ZHSTAR All rights reserved.</i>
 				</h3>
 			</div>
 		</div>
