@@ -1,11 +1,8 @@
 package nba.controller;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import nba.service.AccountService;
-import nba.service.GlobalService;
 import nba.tool.Code;
 import nba.tool.JsonTool;
 import nba.tool.WebUtil;
@@ -33,10 +30,5 @@ public class GlobalController {
 
 		JsonTool.getJson(Code.CHANGELOCALOK).write(response);
 	}
-
-	@Resource
-	private GlobalService globalService;
-	@Resource
-	private AccountService accountService;
 	
 }

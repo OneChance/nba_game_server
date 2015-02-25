@@ -82,7 +82,6 @@ public class GameService extends DatabaseService {
 
 	public String SignPlayer(Player player, Team team) throws Exception {
 
-		// 验证金额
 		if (player.getSal() > team.getTeam_money()) {
 			return Code.NOTENOUGHMONEY;
 		}
@@ -92,7 +91,7 @@ public class GameService extends DatabaseService {
 		if (team.getPlayers() == null || team.getPlayers().equals("")) {
 			players = player.getPlayer_id() + "-" + player.getPos();
 		} else {
-			// 验证阵容
+
 			players = team.getPlayers();
 
 			players = players + "@" + player.getPlayer_id() + "-"
@@ -156,17 +155,17 @@ public class GameService extends DatabaseService {
 		Map<Integer, int[][]> proper = new HashMap<Integer, int[][]>();
 
 		for (int i = 0; i < playerArray.length; i++) {
-			if (playerArray[i].split("-")[1].equals("前锋/中锋")
-					|| playerArray[i].split("-")[1].equals("中锋/前锋")) {
+			if (playerArray[i].split("-")[1].equals("鍓嶉攱/涓攱")
+					|| playerArray[i].split("-")[1].equals("涓攱/鍓嶉攱")) {
 				proper.put(i, new int[][] { { 1, 0, 0 }, { 0, 1, 0 } });
-			} else if (playerArray[i].split("-")[1].equals("后卫")) {
+			} else if (playerArray[i].split("-")[1].equals("鍚庡崼")) {
 				proper.put(i, new int[][] { { 0, 0, 1 } });
-			} else if (playerArray[i].split("-")[1].equals("前锋")) {
+			} else if (playerArray[i].split("-")[1].equals("鍓嶉攱")) {
 				proper.put(i, new int[][] { { 0, 1, 0 } });
-			} else if (playerArray[i].split("-")[1].equals("中锋")) {
+			} else if (playerArray[i].split("-")[1].equals("涓攱")) {
 				proper.put(i, new int[][] { { 1, 0, 0 } });
-			} else if (playerArray[i].split("-")[1].equals("后卫/前锋")
-					|| playerArray[i].split("-")[1].equals("前锋/后卫")) {
+			} else if (playerArray[i].split("-")[1].equals("鍚庡崼/鍓嶉攱")
+					|| playerArray[i].split("-")[1].equals("鍓嶉攱/鍚庡崼")) {
 				proper.put(i, new int[][] { { 0, 1, 0 }, { 0, 0, 1 } });
 			}
 		}
@@ -199,21 +198,6 @@ public class GameService extends DatabaseService {
 									&& p1[i1][2] + p2[i2][2] + p3[i3][2]
 											+ p4[i4][2] + p5[i5][2] <= 2) {
 
-								/*
-								 * System.out.println(p1[i1][0] + "  " +
-								 * p1[i1][1] + "  " + p1[i1][2]);
-								 * System.out.println(p2[i2][0] + "  " +
-								 * p2[i2][1] + "  " + p2[i2][2]);
-								 * System.out.println(p3[i3][0] + "  " +
-								 * p3[i3][1] + "  " + p3[i3][2]);
-								 * System.out.println(p4[i4][0] + "  " +
-								 * p4[i4][1] + "  " + p4[i4][2]);
-								 * System.out.println(p5[i5][0] + "  " +
-								 * p5[i5][1] + "  " + p5[i5][2]);
-								 * 
-								 * System.out.println("------------");
-								 */
-
 								return true;
 							}
 						}
@@ -235,12 +219,11 @@ public class GameService extends DatabaseService {
 	}
 
 	public static void main(String[] args) {
-		// String s = "1-中锋@2-前锋@3-后卫@4-后卫/前锋@5-前锋/后卫";
-		// isValiTeam(s.split("@"));
+
 	}
 
 	public boolean timeTradeAble() {
-		// 每天的三点之后允许球员交易
+
 		SimpleDateFormat sdf = new SimpleDateFormat("HH");
 		String hour = sdf.format(new Date());
 		if (Integer.parseInt(hour) >= 25) {
@@ -254,7 +237,6 @@ public class GameService extends DatabaseService {
 				+ condition, null);
 	}
 
-	/* 结算当天EV */
 	public void EvCal() throws Exception {
 		List<Team> teams = this.gets(Team.class);
 
@@ -289,5 +271,9 @@ public class GameService extends DatabaseService {
 		if (updateTeam.size() > 0) {
 			this.merge(updateTeam);
 		}
+	}
+
+	public void GameDataGet() throws Exception {
+		
 	}
 }

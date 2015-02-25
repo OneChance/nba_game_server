@@ -71,7 +71,7 @@
 
 	<bean name="evCal" class="nba.service.GameService" />
 
-	<bean id="methodInvokingJobDetail"
+	<bean id="evCalJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject">
 			<ref bean="evCal" />
@@ -80,24 +80,45 @@
 			<value>EvCal</value>
 		</property>
 	</bean>
-	<!-- 配置触发器 -->
-	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-		<!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
-		<property name="jobDetail">
-			<ref bean="methodInvokingJobDetail" />
+	
+	<bean id="gameDataGetJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="evCal" />
 		</property>
-		<!-- 每天的8点到21点每隔1分钟触发，具体说明见附录 -->
+		<property name="targetMethod">
+			<value>GameDataGet</value>
+		</property>
+	</bean>
+	
+	<!-- 结算触发器 -->
+	<bean id="evCalTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="evCalJob" />
+		</property>
+		<!-- ev 结算时间 -->
 		<property name="cronExpression">
 			<value>0 50 14 ? * *</value>
 		</property>
-
+	</bean>
+	
+	<!-- 比赛数据抓取触发器 -->
+	<bean id="gameDataGetTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="gameDataGetJob" />
+		</property>
+		<!-- ev 结算时间 -->
+		<property name="cronExpression">
+			<value>0 30 14 ? * *</value>
+		</property>
 	</bean>
 
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<!-- 添加触发器 -->
 		<property name="triggers">
 			<list>
-				<ref bean="cronTrigger"/>
+				<ref bean="evCalTrigger"/>
+				<ref bean="gameDataGetTrigger"/>
 			</list>
 		</property>
 	</bean>
