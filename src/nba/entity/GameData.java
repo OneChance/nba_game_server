@@ -31,7 +31,6 @@ public class GameData {
 	private String foul;
 	private String point;
 	private int ev;
-	private int sal;
 
 	private String game_date;
 
@@ -49,14 +48,6 @@ public class GameData {
 
 	public void setEv(int ev) {
 		this.ev = ev;
-	}
-
-	public int getSal() {
-		return sal;
-	}
-
-	public void setSal(int sal) {
-		this.sal = sal;
 	}
 
 	public String getPlayer_name() {

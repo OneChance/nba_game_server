@@ -162,8 +162,8 @@ public class GameService extends DatabaseService {
 		Map<Integer, int[][]> proper = new HashMap<Integer, int[][]>();
 
 		for (int i = 0; i < playerArray.length; i++) {
-			if (playerArray[i].split("-")[1].equals("前锋/中锋")
-					|| playerArray[i].split("-")[1].equals("中锋/前锋")) {
+			if (playerArray[i].split("-")[1].equals("中锋/前锋")
+					|| playerArray[i].split("-")[1].equals("前锋/中锋")) {
 				proper.put(i, new int[][] { { 1, 0, 0 }, { 0, 1, 0 } });
 			} else if (playerArray[i].split("-")[1].equals("后卫")) {
 				proper.put(i, new int[][] { { 0, 0, 1 } });
@@ -171,8 +171,8 @@ public class GameService extends DatabaseService {
 				proper.put(i, new int[][] { { 0, 1, 0 } });
 			} else if (playerArray[i].split("-")[1].equals("中锋")) {
 				proper.put(i, new int[][] { { 1, 0, 0 } });
-			} else if (playerArray[i].split("-")[1].equals("后卫/前锋")
-					|| playerArray[i].split("-")[1].equals("前锋/后卫")) {
+			} else if (playerArray[i].split("-")[1].equals("前锋/后卫")
+					|| playerArray[i].split("-")[1].equals("后卫/前锋")) {
 				proper.put(i, new int[][] { { 0, 1, 0 }, { 0, 0, 1 } });
 			}
 		}
@@ -312,7 +312,7 @@ public class GameService extends DatabaseService {
 			String id = getIdFromUrl(href);
 
 			if (id.contains(today)) {
-				// 单个比赛统计
+
 				Document one_game = Jsoup
 						.connect("http://nba.sports.sina.com.cn/" + href)
 						.timeout(0).get();
@@ -321,7 +321,7 @@ public class GameService extends DatabaseService {
 				for (Element one_player : all_tr) {
 
 					if (one_player.select("td").size() == 14) {
-						// 14列 球员该场数据
+
 						Elements game_datas = one_player.select("td");
 
 						String player_id = getIdFromUrl(game_datas.get(0)
@@ -361,11 +361,13 @@ public class GameService extends DatabaseService {
 							gd.setPoint(point);
 							gd.setGame_date(game_date);
 
-							// 计算效率值
 							Player player = playerMap.get(player_id);
 							setEV(gd, player);
 
-							updatePlayerList.add(player);
+							if (player != null) {
+								updatePlayerList.add(player);
+							}
+
 							gdList.add(gd);
 						}
 					}
@@ -373,15 +375,14 @@ public class GameService extends DatabaseService {
 			}
 		}
 
-		System.out.println("开始保存");
-		this.merge(gdList);
-		this.merge(updatePlayerList);
-		System.out.println("保存成功");
+		if (gdList.size() > 0)
+			this.merge(gdList);
+		if (updatePlayerList.size() > 0)
+			this.merge(updatePlayerList);
 	}
 
 	private void setEV(GameData gd, Player player) {
 
-		// (得分+篮板+助攻+抢断+封盖)-(出手次数-命中次数)-(罚球次数-罚球命中次数)-失误次数]
 		BigDecimal point = new BigDecimal(gd.getPoint());
 		BigDecimal rebound = new BigDecimal(gd.getRebound());
 		BigDecimal assist = new BigDecimal(gd.getAssist());
@@ -406,7 +407,7 @@ public class GameService extends DatabaseService {
 
 		if (player == null) {
 			System.out.println(gd.getPlayer_name() + "[" + gd.getPlayer_id()
-					+ "] 系统无该球员数据");
+					+ "] no player info");
 		} else {
 
 			int sal = new BigDecimal(player.getSal()).add(new BigDecimal(ev_d))
