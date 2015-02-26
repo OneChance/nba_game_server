@@ -1,5 +1,7 @@
 package nba.controller;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,6 +24,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/game")
 public class GameController {
 
+	
+	@SuppressWarnings({"unchecked", "rawtypes" })
+	public void DealData(List<Player> playerList,HttpServletRequest request) throws Exception, NoSuchMethodException {
+		
+		Class pc = Player.class;
+		Field[] fields = pc.getDeclaredFields();
+		
+		for (Player player : playerList) {
+
+			for (Field f : fields) {
+				String m_name = f.getName().substring(0, 1).toUpperCase()+f.getName().substring(1, f.getName().length());
+				Method getM = pc.getMethod("get"+m_name);
+				Object value = getM.invoke(player);
+				if(value==null){
+					Method setM = pc.getMethod("set"+m_name, String.class);
+					setM.invoke(player, Message.getMessage(request, "no_data"));
+				}
+				
+			}
+		}
+	}
+	
 	@RequestMapping("/myteam/")
 	public String myteam(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -39,6 +63,9 @@ public class GameController {
 					List<Player> playerList = gameService
 							.getPlayersByTeam(team);
 					gameService.setImgSrc(playerList);
+					
+					DealData(playerList,request);
+					
 					request.setAttribute("team_players", playerList);
 				}
 			}
@@ -57,7 +84,10 @@ public class GameController {
 		String team_name = request.getParameter("team_name");
 
 		Team team = new Team(user.getId(), team_name);
-
+		
+		team.setEv(0);
+		team.setTeam_money(10000);
+		
 		String res = gameService.CreateTeam(team);
 
 		JsonTool jt = JsonTool.getJson(res);

@@ -27,22 +27,32 @@ public class AccountController {
 	public void login(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
+		JsonTool jt = null;
 
-		User user = new User(user_name, password);
+		try {
+			String user_name = request.getParameter("user_name");
+			String password = request.getParameter("password");
 
-		String res = accountService.checkLogin(user);
+			User user = new User(user_name, password);
 
-		JsonTool jt = JsonTool.getJson(res);
+			String res = accountService.checkLogin(user);
 
-		if (!res.equals(Code.LOGINOK)) {
-			jt.setMessage(Message.getMessage(request, res));
-		} else {
-			WebUtil.setCookies(response, "loginuid", user.getId().toString());
-			request.getSession().setAttribute("loginu", user);		
-			Team team = gameService.getTeamByUser(user);
-			request.getSession().setAttribute("team", team);
+			jt = JsonTool.getJson(res);
+
+			if (!res.equals(Code.LOGINOK)) {
+				jt.setMessage(Message.getMessage(request, res));
+			} else {
+				WebUtil.setCookies(response, "loginuid", user.getId()
+						.toString());
+				request.getSession().setAttribute("loginu", user);
+				Team team = gameService.getTeamByUser(user);
+				request.getSession().setAttribute("team", team);
+			}
+		} catch (Exception e) {
+			jt = JsonTool.getJson("error");
+			WebUtil.setCookies(response, "loginuid", "");
+			request.getSession().setAttribute("loginu", null);
+			jt.setMessage(Message.getMessage(request, "login_error"));
 		}
 
 		jt.write(response);

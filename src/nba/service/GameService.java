@@ -54,7 +54,7 @@ public class GameService extends DatabaseService {
 
 		return this
 				.gets(Player.class,
-						"select * from player_data a left join (select player_id,shoot,free_throw,rebound,assist,steal,block,fault,foul,point,ev from game_data where game_date = curdate()) b "
+						"select a.*,shoot,free_throw,rebound,assist,steal,block,fault,foul,point,ev from player_data a left join (select * from game_data where game_date = curdate()) b "
 								+ "on a.player_id = b.player_id where a.player_id in ("
 								+ team_player_ids + ") order by sal desc ",
 						null);
@@ -233,7 +233,7 @@ public class GameService extends DatabaseService {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("HH");
 		String hour = sdf.format(new Date());
-		if (Integer.parseInt(hour) >= 25) {
+		if (Integer.parseInt(hour) >= 13) {
 			return true;
 		}
 		return false;

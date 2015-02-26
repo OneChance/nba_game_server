@@ -84,15 +84,8 @@ a {
 	letter-spacing: -3px;
 }
 
-.mid_wrap {
-	text-align: center;
-	font-size: 0;
-	letter-spacing: -3px;
-}
-
-.mid_wrap>* {
+.mid_wrap{
 	font-size: medium;
-	letter-spacing: normal;
 }
 
 .mid_wrap:before {
@@ -440,7 +433,7 @@ text-shadow
 	overflow-y: auto !important;
 	overflow-x: hidden;
 	width: 100%;
-	height: 780px;
+	height: 600px;
 	position: relative;
 	background: #000;
 }
@@ -2464,7 +2457,7 @@ to {
 }
 
 .title-big {
-	font-size: 42px;
+	font-size: 32px;
 	line-height: 80px;
 	color: #d30830;
 }
