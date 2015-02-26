@@ -40,11 +40,10 @@ public class GameController {
 							.getPlayersByTeam(team);
 					gameService.setImgSrc(playerList);
 					request.setAttribute("team_players", playerList);
-					// 如果是手机访问 返回JSON对象封装
 				}
 			}
 		}
-		
+
 		request.setAttribute("tradeAble", gameService.timeTradeAble());
 
 		return "myteam";
@@ -84,7 +83,6 @@ public class GameController {
 			request.setAttribute("pos_select", pos_select);
 		}
 
-		// 球队已有球员过滤
 		User user = accountService.getLoginUser(request);
 		Team team = gameService.getTeamByUser(user);
 		String team_player_ids = gameService.getIdsFromTeam(team);
@@ -134,7 +132,7 @@ public class GameController {
 		jt.write(response);
 
 	}
-	
+
 	@RequestMapping("/unsign_player/")
 	public void UnsignPlayer(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

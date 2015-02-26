@@ -217,12 +217,12 @@ public class GameService extends DatabaseService {
 	}
 
 	public void setImgSrc(List<Player> playerList) {
-		for (Player player : playerList) {
+		/*for (Player player : playerList) {
 			if (player.getImg_src() != null && !player.getImg_src().equals("")) {
 				String[] srcpaths = player.getImg_src().split("\\\\");
 				player.setImg_src(srcpaths[srcpaths.length - 1]);
 			}
-		}
+		}*/
 	}
 
 	public static void main(String[] args) {
