@@ -48,11 +48,11 @@
 										style="opacity: 0; transform: rotate(2160deg) scale(1, 1);"></div>
 								</div>
 								<h3>${player.player_name}</h3>
-							<li class="divider"></li>
+							
 							<li><spring:message code='player_position' />:${player.pos}</li>
 							<li><spring:message code='salary' />:${player.sal}</li>
 							<li><c:if test="${tradeAble}">
-									<a href="#"
+									<a href="#" class="button"
 										onclick="sign_player('${player.player_id}','<spring:message code="confirm_sign"/>')"><spring:message
 											code='sign' /></a>
 								</c:if> <c:if test="${! tradeAble}">

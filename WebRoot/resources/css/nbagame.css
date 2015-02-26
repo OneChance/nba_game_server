@@ -450,7 +450,7 @@ ul.pricing li ul li:last-child {
 	padding: 20px;
 }
 
-ul.pricing li ul li:last-child a {
+ul.pricing li  a {
 	display: block;
 	background-color: #bf0a24;
 	width: 121px;
@@ -470,7 +470,6 @@ ul.pricing li ul li.divider {
 	height: 1px;
 	display: block;
 	padding: 0;
-	background: #306608;
 }
 
 ul.pricing>li.highlight {
