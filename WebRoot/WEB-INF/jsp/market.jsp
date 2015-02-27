@@ -12,7 +12,6 @@
 <script>
 	jQuery(function() {
 		jQuery("#pos_select").val("${pos_select}");
-		$(".loadingbg").hide();
 	});
 </script>
 
@@ -96,3 +95,7 @@
 	</c:forEach>
 
 </div>
+
+<script>
+	$(".loadingbg").hide();
+</script>

@@ -103,9 +103,11 @@
 
 			if ('${loginu}' == '') {
 				alert("<spring:message code='needlogin'/>");
+				$(".loadingbg").show();
 				jQuery("#team").click();
 			} else if ('${team}' == '') {
 				alert("<spring:message code='need_team'/>");
+				$(".loadingbg").show();
 				jQuery("#team").click();
 			} else {
 				$(".loadingbg").show();

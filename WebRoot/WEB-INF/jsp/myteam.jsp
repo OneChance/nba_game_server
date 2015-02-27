@@ -13,10 +13,6 @@
 	jQuery("#tomarket").click(function() {
 		jQuery("#market").click();
 	});
-	
-	jQuery(function() {
-		$(".loadingbg").hide();
-	});
 </script>
 
 <div class="container">
@@ -220,3 +216,6 @@
 
 </div>
 
+<script>
+	$(".loadingbg").hide();
+</script>
