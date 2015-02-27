@@ -76,7 +76,7 @@
 							</li>
 							<li>
 								<c:if test="${tradeAble}">
-									<a href="#" class="button"
+									<a href="#"
 										onclick="sign_player('${player.player_id}','<spring:message code="confirm_sign"/>')"><spring:message
 											code='sign' />
 									</a>
