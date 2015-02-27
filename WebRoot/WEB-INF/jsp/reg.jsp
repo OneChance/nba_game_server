@@ -2,6 +2,13 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>  
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script>
+	jQuery(function() {
+		$("#loadingbg").hide();
+		$(".loadingbg").hide();
+	});
+</script>
+
 <div class="container">
 	<div class="feedback-index fi-center">
 		<form>
