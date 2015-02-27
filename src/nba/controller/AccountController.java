@@ -1,6 +1,5 @@
 package nba.controller;
 
-import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ import nba.tool.WebUtil;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+
 
 @Controller
 @RequestMapping("/account")
@@ -61,9 +60,6 @@ public class AccountController {
 	@RequestMapping("/register/")
 	public void register(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
-		(new CookieLocaleResolver()).setLocale(request, response, new Locale(
-				"en", "US"));
 
 		String user_name = request.getParameter("user_name");
 		String password = request.getParameter("password");
