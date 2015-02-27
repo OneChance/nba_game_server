@@ -217,12 +217,12 @@ public class GameService extends DatabaseService {
 	}
 
 	public void setImgSrc(List<Player> playerList) {
-		/*for (Player player : playerList) {
-			if (player.getImg_src() != null && !player.getImg_src().equals("")) {
-				String[] srcpaths = player.getImg_src().split("\\\\");
-				player.setImg_src(srcpaths[srcpaths.length - 1]);
-			}
-		}*/
+		/*
+		 * for (Player player : playerList) { if (player.getImg_src() != null &&
+		 * !player.getImg_src().equals("")) { String[] srcpaths =
+		 * player.getImg_src().split("\\\\");
+		 * player.setImg_src(srcpaths[srcpaths.length - 1]); } }
+		 */
 	}
 
 	public static void main(String[] args) {
@@ -365,6 +365,33 @@ public class GameService extends DatabaseService {
 							setEV(gd, player);
 
 							if (player != null) {
+								updatePlayerList.add(player);
+							}
+
+							gdList.add(gd);
+						}
+					} else if (one_player.select("td").size() == 2) {
+						// 没有上场的球员
+						Elements game_datas = one_player.select("td");
+
+						String player_id = getIdFromUrl(game_datas.get(0)
+								.select("a").attr("href"));
+						String player_name = game_datas.get(0).select("a")
+								.html();
+
+						if (!player_id.equals("")) {
+							GameData gd = new GameData();
+							gd.setPlayer_id(player_id);
+							gd.setPlayer_name(player_name);
+							gd.setGame_date(game_date);
+							gd.setEv(-5);
+
+							Player player = playerMap.get(player_id);
+
+							if (player != null) {
+								int sal = new BigDecimal(player.getSal()).add(
+										new BigDecimal(gd.getEv())).intValue();
+								player.setSal(sal);
 								updatePlayerList.add(player);
 							}
 

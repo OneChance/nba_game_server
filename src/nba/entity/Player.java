@@ -85,6 +85,8 @@ public class Player {
 	}
 
 	public void setSal(int sal) {
+		if (sal < 500)
+			sal = 500;
 		this.sal = sal;
 	}
 
