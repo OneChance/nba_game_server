@@ -3,31 +3,19 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html class="loaded">
-	<!--<![endif]-->
+
 	<head>
 		<meta charset="utf-8">
-
 		<title>NBA MANAGER</title>
 
-		<!-- <meta name="description" content=""> -->
-		<!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
-		================================================== -->
 		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
-		<!-- IOS6全屏 Chrome高版本全屏
-		================================================== -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
-		<!-- 让360双核浏览器用webkit内核渲染页面
-		================================================== -->
 		<meta name="renderer" content="webkit">
-		<!-- Mobile Specific Metas
-		================================================== -->
-		<!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
 		<meta name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
-		<!-- CSS
-		================================================== -->
+
 		<link href="resources/css/reset.css" rel="stylesheet" type="text/css">
 		<link href="resources/css/magicwall.css" rel="stylesheet"
 			type="text/css">
@@ -47,6 +35,7 @@
 
 	</head>
 	<body>
+
 		<div class="container">
 			<header class="ai-header">
 			<div class="ai-nav-wrap">
@@ -90,16 +79,7 @@
 		</div>
 
 
-
 		<script type="text/javascript" src="resources/js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript"
-			src="resources/js/jquery.mousewheel.min.js"></script>
-		<script type="text/javascript"
-			src="resources/js/jquery.scrollfire.min.js"></script>
-		<!-- 
-		<script type="text/javascript"
-		src="resources/js/jay.plugin.smoothscroll.js"></script> -->
-		<script type="text/javascript" src="resources/js/sly.min.js"></script>
 		<script type="text/javascript" src="resources/js/index.js"></script>
 		<script src="resources/js/nbagame.js"></script>
 

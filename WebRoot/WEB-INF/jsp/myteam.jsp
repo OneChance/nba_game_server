@@ -2,6 +2,13 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%
+	response.setHeader("Pragma", "No-cache");
+	response.setHeader("Cache-Control", "no-cache");
+	response.setDateHeader("Expires", -10);
+%>
+
+
 <script>
 	jQuery("#tomarket").click(function() {
 		jQuery("#market").click();
@@ -90,7 +97,7 @@
 						<li
 							class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"
 							jcarouselindex="2"
-							style="float: left; list-style: none; width: 218px !important;height: 583px; margin-top: 0px">
+							style="float: left; list-style: none; width: 218px !important; height: 583px; margin-top: 0px">
 							<ul>
 								<li class="title">
 									<div class="contain">
@@ -109,48 +116,84 @@
 								</li>
 								<li>
 									<spring:message code='salary' />
-									:<h8>${player.sal}</h8>
+									:
+									<h8>
+									${player.sal}
+									</h8>
 								</li>
 
 								<li>
 									<spring:message code='shoot' />
-									:<h8>${player.shoot}</h8>&nbsp;&nbsp;
+									:
+									<h8>
+									${player.shoot}
+									</h8>
+									&nbsp;&nbsp;
 									<spring:message code='free_throw' />
-									:<h8>${player.free_throw}</h8>
+									:
+									<h8>
+									${player.free_throw}
+									</h8>
 								</li>
 								<li>
 									<spring:message code='rebound' />
-									:<h8>${player.rebound}</h8>&nbsp;&nbsp;
+									:
+									<h8>
+									${player.rebound}
+									</h8>
+									&nbsp;&nbsp;
 									<spring:message code='assist' />
-									:<h8>${player.assist}</h8>
+									:
+									<h8>
+									${player.assist}
+									</h8>
 								</li>
 								<li>
 									<spring:message code='steal' />
-									:<h8>${player.steal}</h8>&nbsp;&nbsp;
+									:
+									<h8>
+									${player.steal}
+									</h8>
+									&nbsp;&nbsp;
 									<spring:message code='block' />
-									:<h8>${player.block}</h8>
+									:
+									<h8>
+									${player.block}
+									</h8>
 								</li>
 								<li>
 									<spring:message code='fault' />
-									:<h8>${player.fault}</h8>&nbsp;&nbsp;
+									:
+									<h8>
+									${player.fault}
+									</h8>
+									&nbsp;&nbsp;
 									<spring:message code='foul' />
-									:<h8>${player.foul}</h8>
+									:
+									<h8>
+									${player.foul}
+									</h8>
 								</li>
 								<li>
 									<spring:message code='point' />
-									:<h8>${player.point}</h8>
+									:
+									<h8>
+									${player.point}
+									</h8>
 								</li>
 								<li>
 									<spring:message code='today_ev' />
-									:<h8>${player.ev}</h8>
+									:
+									<h8>
+									${player.ev}
+									</h8>
 								</li>
 
 								<li>
 									<c:if test="${tradeAble}">
 										<a href="#"
 											onclick="unsign_player('${player.player_id}','<spring:message code="confirm_unsign"/>')"><spring:message
-												code='unsign' />
-										</a>
+												code='unsign' /> </a>
 									</c:if>
 									<c:if test="${! tradeAble}">
 										<h1>
@@ -166,8 +209,7 @@
 			<c:if test="${empty team_players and not empty loginu}">
 				<a class="button" href="#"
 					style="margin-top: 50px; margin-left: 100px; padding: 20px"
-					id="tomarket"><spring:message code="noplayer" />
-				</a>
+					id="tomarket"><spring:message code="noplayer" /> </a>
 			</c:if>
 		</div>
 	</c:if>
