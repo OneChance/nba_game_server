@@ -108,7 +108,7 @@
 				alert("<spring:message code='need_team'/>");
 				jQuery("#team").click();
 			} else {
-				$("#loadingbg").show();
+				$(".loadingbg").show();
 				$("#mainframe").load("game/market/");
 			}
 
