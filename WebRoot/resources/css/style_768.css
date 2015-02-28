@@ -91,7 +91,29 @@
 .index-blog {display:none;}
 
 .call-us a { font-size:24px;}
-.feedback-index {display:none;}
+.feedback-index {}
+.feedback-index form {
+	width: 228px;
+}
+	
+.team_div {
+	width: 220px !important;
+	padding-top: 0px !important;
+}	
+
+.team_player_div{
+	margin-left: 51px; 
+}
+	
+.fi-center {
+	top: 20%;
+	left: 10%;
+}
+	
+.loading {
+	left: 42%;
+}	
+	
 .contact-index {margin:auto 10px;}
 .feedback-and-contact { padding:20px 0;}
 .friend-links { display:none;}
@@ -225,6 +247,7 @@
 .ai-nav-listitem[toelem="index_blog"] {display:none;}
 	
 }
+
 
 
 @media only screen and (max-width:768px){

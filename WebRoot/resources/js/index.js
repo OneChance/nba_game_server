@@ -64,9 +64,8 @@ function login(namenull, needpassword) {
 		success : function(json) {
 			if (json.message != '') {
 				alert(json.message);
-			} else {
-				parent.location.reload();
 			}
+			parent.location.reload();
 		}
 	});
 }

@@ -19,22 +19,20 @@
 		<link href="resources/css/reset.css" rel="stylesheet" type="text/css">
 		<link href="resources/css/style.css" rel="stylesheet" type="text/css">
 		
-		<!-- 
+		
 		<link href="resources/css/magicwall.css" rel="stylesheet"
 			type="text/css">
-		
+
 		<link href="resources/css/style_1280.css" rel="stylesheet"
 			type="text/css">
 		<link href="resources/css/style_1024.css" rel="stylesheet"
 			type="text/css">
 		<link href="resources/css/style_768.css" rel="stylesheet"
 			type="text/css">
-		<link href="resources/css/style_320.css" rel="stylesheet"
-			type="text/css">
+
 		<link href="resources/css/style_retina.css" rel="stylesheet"
 			type="text/css">
-		 -->
-			
+
 		<link href="resources/css/nbagame.css" rel="stylesheet"
 			type="text/css">
 
@@ -54,8 +52,6 @@
 					<div class="ai-logo">
 						<spring:message code="title" />
 					</div>
-
-					<div class="sidebtn"></div>
 
 					<div class="ai-nav-list">
 						<div class="ai-nav-redLine"></div>

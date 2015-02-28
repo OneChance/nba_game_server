@@ -84,22 +84,10 @@
 	transform: translateX(176px) translateZ(0);
 }*/
 .ai-nav-list {
-	display: none;
-	position: fixed;
-	top: 48px;
-	right: 0;
-	height: auto;
-	width: 100px;
-	background: rgba(0, 0, 0, 0.75);
-	/*border-radius:0 0 4px 4px;*/
-	-webkit-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14);
-	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14);
-	-webkit-transform-origin: 77% 0px;
-	-ms-transform-origin: 77% 0px;
-	transform-origin: 77% 0px;
-	-webkit-transform: scale(0.001) translateZ(0);
-	transform: scale(0.001) translateZ(0);
-}	
+	float:left;
+	width:100%;
+}
+	
 @keyframes show_min_side_bar {
 	from {  transform: translateX(200px) translateZ(0);}
 	to {  transform: translateX(0px) translateZ(0);}

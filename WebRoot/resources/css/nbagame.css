@@ -6,13 +6,7 @@
 	float: left;
 }
 
-.fi-center {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -100px;
-	margin-left: -200px;
-}
+
 
 .fi-left {
 	position: relative;
@@ -375,7 +369,6 @@ ul.pricing {
 }
 
 ul.pricing>li {
-	width: 200px !important;
 	float: left;
 	margin-top: 35px;
 	border-radius: 10px;
@@ -2408,13 +2401,7 @@ h8 {
 	-webkit-animation: spinoff .5s infinite linear;
 }
 
-.loading {
-	z-index: 199999;
-	position: absolute;
-	left: 50%;
-	top: 40%;
 
-}
 
 .loadingbg {
 	z-index:99999;

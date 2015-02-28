@@ -198,7 +198,6 @@ a {
 
 .ai-logo:before {
 	letter-spacing: 10px;
-	content: "\e608\e609";
 }
 
 .ai-imlink {
@@ -230,11 +229,15 @@ text-shadow
 
 
 
+
+
 :
 
 
 
+
  
+
 
 
 
@@ -245,7 +248,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -253,7 +258,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -267,11 +274,15 @@ text-shadow
 
 
 
+
+
 :
 
 
 
+
  
+
 
 
 
@@ -282,7 +293,9 @@ text-shadow
 
 
 
+
   
+
 
 
 
@@ -302,11 +315,15 @@ text-shadow
 
 
 
+
+
 :
 
 
 
+
  
+
 
 
 
@@ -317,7 +334,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -325,7 +344,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -339,11 +360,15 @@ text-shadow
 
 
 
+
+
 :
 
 
 
+
  
+
 
 
 
@@ -354,7 +379,9 @@ text-shadow
 
 
 
+
   
+
 
 
 
@@ -804,7 +831,10 @@ to {
 
 
 
+
+
 :
+
 
 
 
@@ -812,7 +842,10 @@ to {
 
 
 
+
 perspective
+
+
 
 
 
@@ -825,8 +858,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -839,8 +876,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -857,7 +898,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -865,7 +909,10 @@ transform
 
 
 
+
 perspective
+
+
 
 
 
@@ -878,8 +925,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -892,8 +943,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -913,7 +968,10 @@ translate3d
 
 
 
+
+
 :
+
 
 
 
@@ -921,7 +979,10 @@ translate3d
 
 
 
+
 perspective
+
+
 
 
 
@@ -934,8 +995,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -948,8 +1013,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -966,7 +1035,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -974,7 +1046,10 @@ transform
 
 
 
+
 perspective
+
+
 
 
 
@@ -987,8 +1062,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1001,8 +1080,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1022,7 +1105,10 @@ translate3d
 
 
 
+
+
 :
+
 
 
 
@@ -1030,7 +1116,10 @@ translate3d
 
 
 
+
 perspective
+
+
 
 
 
@@ -1043,8 +1132,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1057,8 +1150,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1075,7 +1172,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -1083,7 +1183,10 @@ transform
 
 
 
+
 perspective
+
+
 
 
 
@@ -1096,8 +1199,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1110,8 +1217,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1128,11 +1239,15 @@ opacity
 
 
 
+
+
 :
 
 
 
+
  
+
 
 
 
@@ -1157,7 +1272,10 @@ keyframes flipInX { 0% {
 
 
 
+
+
 :
+
 
 
 
@@ -1165,7 +1283,10 @@ keyframes flipInX { 0% {
 
 
 
+
 perspective
+
+
 
 
 
@@ -1178,8 +1299,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1192,8 +1317,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1210,7 +1339,10 @@ translate3d
 
 
 
+
+
 :
+
 
 
 
@@ -1218,7 +1350,10 @@ translate3d
 
 
 
+
 perspective
+
+
 
 
 
@@ -1231,8 +1366,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1245,8 +1384,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1263,7 +1406,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -1271,7 +1417,10 @@ transform
 
 
 
+
 perspective
+
+
 
 
 
@@ -1284,8 +1433,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1298,8 +1451,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1319,7 +1476,10 @@ translate3d
 
 
 
+
+
 :
+
 
 
 
@@ -1327,7 +1487,10 @@ translate3d
 
 
 
+
 perspective
+
+
 
 
 
@@ -1340,8 +1503,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1354,8 +1521,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1372,7 +1543,10 @@ translate3d
 
 
 
+
+
 :
+
 
 
 
@@ -1380,7 +1554,10 @@ translate3d
 
 
 
+
 perspective
+
+
 
 
 
@@ -1393,8 +1570,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1407,8 +1588,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1425,7 +1610,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -1433,7 +1621,10 @@ transform
 
 
 
+
 perspective
+
+
 
 
 
@@ -1446,8 +1637,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1460,8 +1655,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1481,7 +1680,10 @@ translate3d
 
 
 
+
+
 :
+
 
 
 
@@ -1489,7 +1691,10 @@ translate3d
 
 
 
+
 perspective
+
+
 
 
 
@@ -1502,8 +1707,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1516,8 +1725,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1534,7 +1747,10 @@ translate3d
 
 
 
+
+
 :
+
 
 
 
@@ -1542,7 +1758,10 @@ translate3d
 
 
 
+
 perspective
+
+
 
 
 
@@ -1555,8 +1774,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1569,8 +1792,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1587,7 +1814,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -1595,7 +1825,10 @@ transform
 
 
 
+
 perspective
+
+
 
 
 
@@ -1608,8 +1841,12 @@ px
 
 
 
+
+
 )
 rotateX
+
+
 
 
 
@@ -1622,8 +1859,12 @@ deg
 
 
 
+
+
 )
 translate3d
+
+
 
 
 
@@ -1640,11 +1881,15 @@ opacity
 
 
 
+
+
 :
 
 
 
+
  
+
 
 
 
@@ -3089,11 +3334,11 @@ to {
 	opacity: 1;
 }
 
-.case-gallery-wrap .hover-content  ~ div.magicwall-thumb {
+.case-gallery-wrap .hover-content   ~ div.magicwall-thumb {
 	
 }
 
-.case-gallery-wrap .hover-content:hover  ~ div.magicwall-thumb {
+.case-gallery-wrap .hover-content:hover   ~ div.magicwall-thumb {
 	
 }
 
@@ -3649,7 +3894,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -3657,7 +3905,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -3675,8 +3926,12 @@ scale
 
 
 
+
+
 );
 animation-timing-function
+
+
 
 
 
@@ -3687,11 +3942,15 @@ animation-timing-function
 
 
 
+
  
 
 
 
+
 ease-out
+
+
 
 
 
@@ -3709,7 +3968,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -3717,7 +3979,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -3735,7 +4000,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -3743,7 +4011,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -3761,7 +4032,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -3769,7 +4043,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -3787,8 +4064,12 @@ scale
 
 
 
+
+
 );
 animation-timing-function
+
+
 
 
 
@@ -3799,11 +4080,15 @@ animation-timing-function
 
 
 
+
  
 
 
 
+
 ease-out
+
+
 
 
 
@@ -3818,7 +4103,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -3826,7 +4114,10 @@ background
 
 
 
+
 #d3d3d3
+
+
 
 
 
@@ -3841,7 +4132,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -3849,7 +4143,10 @@ color
 
 
 
+
 #000
+
+
 
 
 
@@ -3867,7 +4164,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -3875,7 +4175,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -3892,7 +4195,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -3900,7 +4206,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -3915,7 +4224,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -3923,7 +4235,10 @@ background
 
 
 
+
 #d3d3d3
+
+
 
 
 
@@ -3938,7 +4253,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -3946,7 +4264,10 @@ color
 
 
 
+
 #000
+
+
 
 
 
@@ -3973,7 +4294,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -3981,7 +4305,10 @@ color
 
 
 
+
 scale
+
+
 
 
 
@@ -3993,6 +4320,8 @@ scale
 ,
 0
 .95
+
+
 
 
 
@@ -4007,7 +4336,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4015,7 +4347,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4033,8 +4368,12 @@ scale
 
 
 
+
+
 );
 -webkit-animation-timing-function
+
+
 
 
 
@@ -4045,11 +4384,15 @@ scale
 
 
 
+
  
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4064,7 +4407,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4072,7 +4418,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4090,7 +4439,10 @@ ease-out
 
 
 
+
+
 :
+
 
 
 
@@ -4098,7 +4450,10 @@ ease-out
 
 
 
+
 scale
+
+
 
 
 
@@ -4116,7 +4471,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4124,7 +4482,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4142,7 +4503,10 @@ scale
 
 
 
+
+
 :
+
 
 
 
@@ -4150,7 +4514,10 @@ scale
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4165,7 +4532,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4173,7 +4543,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4191,7 +4564,10 @@ ease-out
 
 
 
+
+
 :
+
 
 
 
@@ -4199,7 +4575,10 @@ ease-out
 
 
 
+
 scale
+
+
 
 
 
@@ -4211,6 +4590,8 @@ scale
 ,
 0
 .95
+
+
 
 
 
@@ -4225,7 +4606,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4233,7 +4617,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4251,8 +4638,12 @@ scale
 
 
 
+
+
 );
 -webkit-animation-timing-function
+
+
 
 
 
@@ -4263,11 +4654,15 @@ scale
 
 
 
+
  
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4282,7 +4677,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4290,7 +4688,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4305,7 +4706,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -4313,7 +4717,10 @@ background
 
 
 
+
 #d3d3d3
+
+
 
 
 
@@ -4328,7 +4735,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -4336,7 +4746,10 @@ color
 
 
 
+
 #000
+
+
 
 
 
@@ -4354,7 +4767,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -4362,7 +4778,10 @@ color
 
 
 
+
 scale
+
+
 
 
 
@@ -4379,7 +4798,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4387,7 +4809,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4404,7 +4829,10 @@ scale
 
 
 
+
+
 :
+
 
 
 
@@ -4412,7 +4840,10 @@ scale
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4427,7 +4858,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4435,7 +4869,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4450,7 +4887,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -4458,7 +4898,10 @@ background
 
 
 
+
 #d3d3d3
+
+
 
 
 
@@ -4473,7 +4916,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -4481,7 +4927,10 @@ color
 
 
 
+
 #000
+
+
 
 
 
@@ -4508,7 +4957,10 @@ keyframes ipt-focus { 0 {
 
 
 
+
+
 :
+
 
 
 
@@ -4516,7 +4968,10 @@ keyframes ipt-focus { 0 {
 
 
 
+
 scale
+
+
 
 
 
@@ -4528,6 +4983,8 @@ scale
 ,
 0
 .95
+
+
 
 
 
@@ -4542,7 +4999,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4550,7 +5010,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4568,8 +5031,12 @@ scale
 
 
 
+
+
 );
 -webkit-animation-timing-function
+
+
 
 
 
@@ -4580,11 +5047,15 @@ scale
 
 
 
+
  
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4599,7 +5070,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4607,7 +5081,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4625,7 +5102,10 @@ ease-out
 
 
 
+
+
 :
+
 
 
 
@@ -4633,7 +5113,10 @@ ease-out
 
 
 
+
 scale
+
+
 
 
 
@@ -4651,7 +5134,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4659,7 +5145,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4677,7 +5166,10 @@ scale
 
 
 
+
+
 :
+
 
 
 
@@ -4685,7 +5177,10 @@ scale
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4700,7 +5195,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4708,7 +5206,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4726,7 +5227,10 @@ ease-out
 
 
 
+
+
 :
+
 
 
 
@@ -4734,7 +5238,10 @@ ease-out
 
 
 
+
 scale
+
+
 
 
 
@@ -4746,6 +5253,8 @@ scale
 ,
 0
 .95
+
+
 
 
 
@@ -4760,7 +5269,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4768,7 +5280,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4786,8 +5301,12 @@ scale
 
 
 
+
+
 );
 -webkit-animation-timing-function
+
+
 
 
 
@@ -4798,11 +5317,15 @@ scale
 
 
 
+
  
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4817,7 +5340,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4825,7 +5351,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4840,7 +5369,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -4848,7 +5380,10 @@ background
 
 
 
+
 #d3d3d3
+
+
 
 
 
@@ -4863,7 +5398,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -4871,7 +5409,10 @@ color
 
 
 
+
 #000
+
+
 
 
 
@@ -4889,7 +5430,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -4897,7 +5441,10 @@ color
 
 
 
+
 scale
+
+
 
 
 
@@ -4914,7 +5461,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -4922,7 +5472,10 @@ transform
 
 
 
+
 scale
+
+
 
 
 
@@ -4939,7 +5492,10 @@ scale
 
 
 
+
+
 :
+
 
 
 
@@ -4947,7 +5503,10 @@ scale
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4962,7 +5521,10 @@ animation-timing-function
 
 
 
+
+
 :
+
 
 
 
@@ -4970,7 +5532,10 @@ animation-timing-function
 
 
 
+
 ease-out
+
+
 
 
 
@@ -4985,7 +5550,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -4993,7 +5561,10 @@ background
 
 
 
+
 #d3d3d3
+
+
 
 
 
@@ -5008,7 +5579,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -5016,7 +5590,10 @@ color
 
 
 
+
 #000
+
+
 
 
 
@@ -5150,17 +5727,86 @@ color
 	background: red;
 }
 
-#mapContent .pop img:nth-last-child (2) {
-	border-radius: 55%;
-	left: 234px !important;
-	top: 4px !important;
-	width: auto !important;
-	height: auto !important;
-	content: url(../images/wx-pop-cls-btn.gif);
-	background: red;
-	padding: 4px;
-}
+#mapContent
+ 
+.pop
+ 
+img
+:nth-last-child
+ 
+(2)
+{
+border-radius
+:
+ 
+55%;
+left
+:
+ 
+234
+px
+ 
+!
+important
+;
 
+	
+top
+:
+ 
+4
+px
+ 
+!
+important
+;
+
+	
+width
+:
+ 
+auto
+ 
+!
+important
+;
+
+	
+height
+:
+ 
+auto
+ 
+!
+important
+;
+
+	
+content
+:
+ 
+url
+(../images/wx-pop-cls-btn
+.gif
+);
+
+	
+background
+:
+ 
+red
+;
+
+	
+padding
+:
+ 
+4
+px
+;
+
+
+}
 label.BMapLabel {
 	display: inline-block;
 	font-size: 12px !important;
@@ -5474,20 +6120,40 @@ label.BMapLabel {
 	line-height: 20px;
 }
 
-.cl_txt:nth-child (1) {
-	padding-top: 8px;
-}
+.cl_txt
+:nth-child
+ 
+(1)
+{
+padding-top
+:
+ 
+8
+px
+;
 
+
+}
 .cl_tel {
 	color: #d11e37;
 	font-size: 14px;
 	font-weight: bold;
 }
 
-.cl_tel:nth-last-child (1) {
-	padding-bottom: 8px;
-}
+.cl_tel
+:nth-last-child
+ 
+(1)
+{
+padding-bottom
+:
+ 
+8
+px
+;
 
+
+}
 .minsbar {
 	height: 34px;
 	line-height: 34px;
@@ -5948,7 +6614,7 @@ to {
 
 .ui-loader-verbose {
 	width: 200px;
-	filter: Alpha(Opacity = 88);
+	filter: Alpha(Opacity =   88);
 	opacity: .88;
 	box-shadow: 0 1px 1px -1px #fff;
 	height: auto;
@@ -5965,6 +6631,7 @@ to {
 	left: 50%;
 	border: 0;
 }
+
 /**********************************************/
 .ui-corner-all,.ui-btn-corner-all {
 	-webkit-background-clip: padding;
@@ -5974,4 +6641,26 @@ to {
 .ui-corner-all {
 	-webkit-border-radius: .6em;
 	border-radius: .6em;
+}
+
+.team_div {
+	width: 300px !important;
+	padding-top: 0px !important;
+}
+
+.team_player_div{
+	margin-left: 15px; 
+}
+
+.fi-center {
+	position: absolute;
+	top: 30%;
+	left: 35%;
+}
+
+.loading {
+	z-index: 199999;
+	position: absolute;
+	left: 50%;
+	top: 40%;
 }
