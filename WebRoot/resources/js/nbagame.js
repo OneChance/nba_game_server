@@ -11,7 +11,6 @@ jQuery(".ai-nav-listitem").click(function() {
 
 
 jQuery(".options a").click(function() {
-	alert('xxx')
 	jQuery(".options li a").each(function() {
 		jQuery(this).removeClass("active");
 	});
@@ -19,6 +18,7 @@ jQuery(".options a").click(function() {
 	jQuery(this).addClass("active");
 
 });
+
 
 
 

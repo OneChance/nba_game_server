@@ -2417,7 +2417,7 @@ h8 {
 }
 
 .loadingbg {
-	z-index: 2;
+	z-index:99999;
 	position: absolute;
 	width: 100%;
 	height: 100%;
