@@ -95,3 +95,7 @@
 	</c:forEach>
 
 </div>
+
+<script>
+	$(".loadingbg").hide();
+</script>

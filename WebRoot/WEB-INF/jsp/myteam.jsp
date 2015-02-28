@@ -216,3 +216,6 @@
 
 </div>
 
+<script>
+	$(".loadingbg").hide();
+</script>

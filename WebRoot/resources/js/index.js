@@ -35,7 +35,9 @@ function reg(namenull, needpassword) {
 }
 
 function login(namenull, needpassword) {
-
+	
+	$(".loadingbg").show();
+	
 	var user_name = jQuery("#user_name").val();
 	var password = jQuery("#password").val();
 
