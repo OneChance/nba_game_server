@@ -17,9 +17,12 @@
 		<meta name="format-detection" content="telephone=no">
 
 		<link href="resources/css/reset.css" rel="stylesheet" type="text/css">
+		<link href="resources/css/style.css" rel="stylesheet" type="text/css">
+		
+		<!-- 
 		<link href="resources/css/magicwall.css" rel="stylesheet"
 			type="text/css">
-		<link href="resources/css/style.css" rel="stylesheet" type="text/css">
+		
 		<link href="resources/css/style_1280.css" rel="stylesheet"
 			type="text/css">
 		<link href="resources/css/style_1024.css" rel="stylesheet"
@@ -30,6 +33,8 @@
 			type="text/css">
 		<link href="resources/css/style_retina.css" rel="stylesheet"
 			type="text/css">
+		 -->
+			
 		<link href="resources/css/nbagame.css" rel="stylesheet"
 			type="text/css">
 
