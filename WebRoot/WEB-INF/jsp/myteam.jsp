@@ -93,11 +93,11 @@
 			<c:if test="${not empty team_players}">
 				<c:forEach items="${team_players}" var="player" varStatus="status">
 					<ul class="green pricing jcarousel-list jcarousel-list-horizontal"
-						style="width: 218px; float: left; margin-left: 15px; margin-top: 10px; height: 583px">
+						style="width: 218px; float: left; margin-left: 15px; margin-top: 10px; height: 550px">
 						<li
 							class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"
 							jcarouselindex="2"
-							style="float: left; list-style: none; width: 218px !important; height: 583px; margin-top: 0px">
+							style="float: left; list-style: none; width: 218px !important; height: 550px; margin-top: 0px">
 							<ul>
 								<li class="title">
 									<div class="contain">
