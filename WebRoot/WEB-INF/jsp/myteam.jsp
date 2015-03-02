@@ -88,7 +88,7 @@
 
 
 	<c:if test="${not empty team}">
-		<div style="float: left;">
+		<div class="team_player_container" style="float: left;">
 			<c:if test="${not empty team_players}">
 				<c:forEach items="${team_players}" var="player" varStatus="status">
 					<ul class="green pricing jcarousel-list jcarousel-list-horizontal team_player_div"

@@ -22,7 +22,8 @@
 		
 		<link href="resources/css/magicwall.css" rel="stylesheet"
 			type="text/css">
-
+		<link href="resources/css/style_1580.css" rel="stylesheet"
+			type="text/css">
 		<link href="resources/css/style_1280.css" rel="stylesheet"
 			type="text/css">
 		<link href="resources/css/style_1024.css" rel="stylesheet"
