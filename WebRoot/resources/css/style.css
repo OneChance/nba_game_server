@@ -2952,9 +2952,9 @@ to {
 }
 
 .title-big {
-	font-size: 32px;
-	line-height: 80px;
+	font-size: 20px;
 	color: #d30830;
+	text-align:center;
 }
 
 .title-medium {

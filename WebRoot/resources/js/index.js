@@ -1,5 +1,7 @@
 function reg(namenull, needpassword) {
 
+	$(".loadingbg").show();
+	
 	var user_name = jQuery("#user_name").val();
 	var password = jQuery("#password").val();
 
@@ -30,7 +32,9 @@ function reg(namenull, needpassword) {
 				// 跳转到我的球队去登陆
 				jQuery("#team").click();
 			}
-		}
+			
+			$(".loadingbg").hide();
+		}	
 	});
 }
 
@@ -72,6 +76,8 @@ function login(namenull, needpassword) {
 
 function create_team(teamnamenull) {
 
+	$(".loadingbg").show();
+	
 	var team_name = jQuery("#team_name").val();
 
 	if (!team_name) {
@@ -93,7 +99,10 @@ function create_team(teamnamenull) {
 			} else {
 				jQuery("#team").click();
 			}
-		}
+			
+			$(".loadingbg").hide();
+		}	
+		
 	});
 }
 
@@ -104,6 +113,9 @@ function search() {
 
 function sign_player(player_id,confirm_sign) {
 	if (confirm(confirm_sign)) {
+		
+		$(".loadingbg").show();
+		
 		var pos_select = jQuery("#pos_select").val();
 
 		jQuery.ajax({
@@ -120,6 +132,8 @@ function sign_player(player_id,confirm_sign) {
 					$("#mainframe").load(
 							"game/market/?pos_select=" + pos_select);
 				}
+				
+				$(".loadingbg").hide();
 			}
 		});
 	}
@@ -128,6 +142,9 @@ function sign_player(player_id,confirm_sign) {
 function unsign_player(player_id, confirm_unsign) {
 
 	if (confirm(confirm_unsign)) {
+		
+		$(".loadingbg").show();
+		
 		jQuery.ajax({
 			type : "POST",
 			url : "game/unsign_player/",
@@ -141,6 +158,7 @@ function unsign_player(player_id, confirm_unsign) {
 				} else {
 					$("#mainframe").load("game/myteam/");
 				}
+				$(".loadingbg").hide();
 			}
 		});
 	}

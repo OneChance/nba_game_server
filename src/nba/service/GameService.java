@@ -9,14 +9,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Session;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
+
+import nba.entity.Arena;
 import nba.entity.GameData;
 import nba.entity.Player;
 import nba.entity.Team;
+import nba.entity.TradeLog;
 import nba.entity.User;
 import nba.tool.Code;
 
@@ -24,10 +28,18 @@ import nba.tool.Code;
 public class GameService extends DatabaseService {
 
 	public static int SAL_RATIO = 1;
+	public static int STANDARD_EV = 150;
 
 	public Team getTeamByUser(User user) throws Exception {
-		return this.get(Team.class, "select * from team where user_id=?",
-				new Long[] { user.getId() });
+
+		List<Team> tList = this.getsByHibernate(Team.class,
+				"from Team where user_id=?", new Long[] { user.getId() });
+
+		if (tList != null && tList.size() > 0) {
+			return tList.get(0);
+		}
+
+		return null;
 	}
 
 	public String getIdsFromTeam(Team team) {
@@ -72,8 +84,10 @@ public class GameService extends DatabaseService {
 			}
 
 			this.save(team);
+
 			return Code.CREATETEAMOK;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return Code.CREATETEAMERROR;
 		}
 	}
@@ -89,32 +103,41 @@ public class GameService extends DatabaseService {
 
 	public String SignPlayer(Player player, Team team) throws Exception {
 
-		if (player.getSal() > team.getTeam_money()) {
-			return Code.NOTENOUGHMONEY;
-		}
-
-		String players = "";
-
-		if (team.getPlayers() == null || team.getPlayers().equals("")) {
-			players = player.getPlayer_id() + "-" + player.getPos();
-		} else {
-
-			players = team.getPlayers();
-
-			players = players + "@" + player.getPlayer_id() + "-"
-					+ player.getPos();
-
-			String res = checkPos(players);
-
-			if (!res.equals("ok")) {
-				return res;
+		try {
+			if (player.getSal() > team.getTeam_money()) {
+				return Code.NOTENOUGHMONEY;
 			}
+
+			String players = player.getPlayer_id() + "-" + player.getPos()
+					+ "-" + player.getSal();
+
+			if (team.getPlayers() != null && !team.getPlayers().equals("")) {
+
+				players = team.getPlayers() + "@" + player.getPlayer_id() + "-"
+						+ player.getPos() + "-" + player.getSal();
+
+				String res = checkPos(players);
+
+				if (!res.equals("ok")) {
+					return res;
+				}
+			}
+
+			team.setPlayers(players);
+			team.setTeam_money(team.getTeam_money() - player.getSal());
+
+			TradeLog tl = new TradeLog(getNowDate(), player.getPlayer_id(),
+					"in", player.getSal(), team.getUser_id());
+
+			Session session = this.getSessionFactory().openSession();
+			session.beginTransaction();
+			session.merge(team);
+			session.merge(tl);
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			return Code.OPERFIAL;
 		}
-
-		team.setPlayers(players);
-		team.setTeam_money(team.getTeam_money() - player.getSal());
-
-		this.merge(team);
 
 		return Code.SIGNOK;
 	}
@@ -138,7 +161,14 @@ public class GameService extends DatabaseService {
 		team.setPlayers(new_team_array);
 		team.setTeam_money(team.getTeam_money() + player.getSal());
 
-		this.merge(team);
+		TradeLog tl = new TradeLog(getNowDate(), player.getPlayer_id(), "out",
+				player.getSal(), team.getUser_id());
+
+		Session session = this.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.merge(team);
+		session.merge(tl);
+		session.getTransaction().commit();
 
 		return Code.UNSIGNOK;
 	}
@@ -233,7 +263,7 @@ public class GameService extends DatabaseService {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("HH");
 		String hour = sdf.format(new Date());
-		if (Integer.parseInt(hour) >= 15) {
+		if (Integer.parseInt(hour) >= 9) {
 			return true;
 		}
 		return false;
@@ -244,15 +274,27 @@ public class GameService extends DatabaseService {
 				+ condition, null);
 	}
 
+	/*
+	 * 1. 当天ev结算2. 根据当前人气值，计算当天比赛球票价格3. 根据ev计算人气变化4. 根据球票价格，当天观众计算球馆收益5. 支付球员工资
+	 * 6. 记录当天收益
+	 */
 	public void EvCal() throws Exception {
-		List<Team> teams = this.gets(Team.class);
+
+		List<Team> teams = this.getsByHibernate(Team.class, "from Team ", null);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		List<GameData> gamedatas = GetGamedataByCondition(" and game_date = '"
 				+ sdf.format(new Date()) + "'");
+		List<Player> players = this.getPlayerByCondition("");
 
 		Map<String, Integer> player_ev = new HashMap<String, Integer>();
+		Map<String, Player> playerMap = new HashMap<String, Player>();
+
+		for (Player player : players) {
+			playerMap.put(player.getPlayer_id().toString(), player);
+		}
+
 		for (GameData gamedata : gamedatas) {
 			player_ev.put(gamedata.getPlayer_id(), gamedata.getEv());
 		}
@@ -261,16 +303,43 @@ public class GameService extends DatabaseService {
 
 		for (Team team : teams) {
 			String player_ids = this.getIdsFromTeam(team);
+
 			if (!player_ids.equals("")) {
 				int ev_sum = 0;
+				int fans_change = 0;
+
 				String[] player_id_array = player_ids.split(",");
+
 				for (String player_id : player_id_array) {
+					
+					int player_ev = player_ev.get(player_id);
+					
 					if (player_ev.get(player_id) != null) {
-						ev_sum += player_ev.get(player_id);
+						if (player_id_array.length == 5) {
+							//球队人数不满
+							ev_sum += player_ev.get(player_id);
+						}
+						
+						// 根据ev计算人气变化
+						Player player = playerMap.get(player_id);
+						fans_change += calFanNumByEv(player.getSal(), ev_sum);
 					}
+					
 				}
 
-				team.setEv(team.getEv() + ev_sum);
+				// 支付球员工资
+				payPlayer(team);
+
+				// 记录当天收益
+
+				team.setEv(team.getEv() + fans_change);
+
+				if (fans_change > 0) {
+					team.setFans_change_state("up");
+				} else {
+					team.setFans_change_state("down");
+				}
+
 				updateTeam.add(team);
 			}
 		}
@@ -278,6 +347,49 @@ public class GameService extends DatabaseService {
 		if (updateTeam.size() > 0) {
 			this.merge(updateTeam);
 		}
+	}
+
+	private int calTicketsPrice(int fans) {
+		// 返回球迷总数的平方根
+		return (int) Math.round(Math.sqrt(fans));
+	}
+
+	public int calFanNumByEv(int current_sal, int ev) {
+
+		if (ev < 0) {
+			return ev;
+		} else {
+
+			int offset = current_sal / ev - STANDARD_EV;
+			if (offset < 0) {
+				// 球迷增长
+				return offset / 10;
+			} else {
+				// 球迷减少
+				return -1 * offset / 100;
+			}
+		}
+	}
+
+	public void calTodayIn(Team team) {
+
+		// 根据当前人气值，计算当天比赛球票价格
+		int tickets_price = calTicketsPrice(team.getEv());
+
+		Arena arena = team.getArena();
+
+		// 到场观众数
+		int fans_in = (int) (arena.getCap() * arena.getAttendance());
+
+		arena.setToday_in(tickets_price * fans_in);
+
+	}
+
+	public void calTodayIn(Team team){
+		String players = team.getPlayers();
+		if(players)
+		int sal_sum = 0 ;
+		
 	}
 
 	public void GameDataGet() throws Exception {
@@ -451,5 +563,9 @@ public class GameService extends DatabaseService {
 		String id = url.substring(start, url.length());
 
 		return id;
+	}
+
+	public String getNowDate() {
+		return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	}
 }

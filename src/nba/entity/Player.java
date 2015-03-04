@@ -14,9 +14,12 @@ public class Player {
 
 	private String player_name;
 	private String pos;// 位置
-	private int sal;// 工资
+	private int sal;// 当前工资
+
 	private String img_src;
 
+	@Transient
+	private int sal_cur; // 签约工资
 	@Transient
 	private String shoot;
 	@Transient
@@ -37,6 +40,14 @@ public class Player {
 	private String point;
 	@Transient
 	private Integer ev;
+
+	public int getSal_cur() {
+		return sal_cur;
+	}
+
+	public void setSal_cur(int sal_cur) {
+		this.sal_cur = sal_cur;
+	}
 
 	public Integer getEv() {
 		return ev;

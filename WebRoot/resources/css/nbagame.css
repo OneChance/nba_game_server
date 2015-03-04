@@ -10,8 +10,8 @@
 
 .fi-left {
 	position: relative;
-	margin-top: 35px;
-	left: 30px;
+	margin-top: 0px;
+	margin-left: 50px;
 }
 
 .my-team {
@@ -353,8 +353,6 @@ iframe {
 
 ul.pricing {
 	list-style: none;
-	width: 1000px;
-	height: 207px;
 	padding: 0;
 }
 
@@ -370,7 +368,7 @@ ul.pricing {
 
 ul.pricing>li {
 	float: left;
-	margin-top: 35px;
+	margin-top: 10px;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -443,11 +441,9 @@ ul.pricing li ul li:last-child {
 	padding: 20px;
 }
 
-ul.pricing li  a {
+ul.pricing li a {
 	display: block;
 	background-color: #bf0a24;
-	width: 121px;
-	height: 26px;
 	font-weight: bold;
 	font-size: 14px;
 	text-align: center;
@@ -456,7 +452,13 @@ ul.pricing li  a {
 	text-decoration: none;
 	padding-top: 7px;
 	margin: 0 auto;
-	width: 121px;
+	width: 90%;
+	padding: 10px;
+	
+}
+
+ul.pricing li a:hover{
+	background-color: #C31A32;
 }
 
 ul.pricing li ul li.divider {
@@ -1179,27 +1181,6 @@ ul.steps li h4:hover em {
 	-webkit-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
-}
-
-a.button {
-	background: #bf0a24;
-	border: 1px solid #285008;
-	font-size: 18px;
-	font-weight: bold;
-	color: #fff;
-	text-shadow: 1px 1px #285008;
-	text-align: center;
-	display: block;
-	padding: 7px;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	text-decoration: none;
-	margin-top: 15px;
-}
-
-a.button:hover {
-	background: #C9223A;
 }
 
 /* === Footer Quarter Splits === */
@@ -2347,6 +2328,10 @@ a.readon:hover {
 img.circled { /* border-radius:115px; */
 	-moz-border-radius: 115px;
 	-webkit-border-radius: 115px;
+	border: 5px solid #fff;
+}
+
+img.boxed { /* border-radius:115px; */
 	border: 5px solid #fff;
 }
 

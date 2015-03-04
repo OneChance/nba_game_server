@@ -1,10 +1,13 @@
 package nba.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "team")
@@ -19,6 +22,28 @@ public class Team {
 	private Long user_id;
 	private Integer team_money;
 	private Integer ev;
+
+	@OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "team")
+	private Arena arena;
+
+	@Transient
+	private String fans_change_state;
+
+	public Arena getArena() {
+		return arena;
+	}
+
+	public void setArena(Arena arena) {
+		this.arena = arena;
+	}
+
+	public String getFans_change_state() {
+		return fans_change_state;
+	}
+
+	public void setFans_change_state(String fans_change_state) {
+		this.fans_change_state = fans_change_state;
+	}
 
 	public Integer getTeam_money() {
 		return team_money;

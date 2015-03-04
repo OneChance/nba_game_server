@@ -242,6 +242,13 @@ public class DatabaseService {
 		try {
 			session = this.getSessionFactory().openSession();
 			Query query = session.createQuery(sql);
+			
+			if (null != obs && obs.length > 0) {
+				for (int n = 0; n < obs.length; n++) {
+					query.setParameter(0, obs[0]);
+				}
+			}
+
 			t = query.list();
 		} catch (Exception e) {
 			throw new Exception(e);

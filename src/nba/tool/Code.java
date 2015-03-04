@@ -21,4 +21,5 @@ public class Code {
 	public static String TEAMLISTERROR = "team_list_error";
 	
 	public static String UNSIGNOK = "unsign_ok";
+	public static String OPERFIAL = "oper_fail";
 }

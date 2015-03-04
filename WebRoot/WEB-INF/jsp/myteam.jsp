@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -36,13 +37,9 @@
 			</form>
 		</c:if>
 		<c:if test="${not empty loginu}">
-			<h2 class="title-big">
-				<spring:message code="loginok" />
-				,${loginu.user_name}
-			</h2>
 
 			<c:if test="${empty team}">
-				<form>
+				<form style="margin-top: 50px;">
 					<div class="fb-rows">
 						<input id="team_name" class="fb-ipt"
 							placeholder="<spring:message code="team_name"/>:" type="text">
@@ -57,18 +54,24 @@
 			</c:if>
 
 			<c:if test="${not empty team}">
-				<ul class="green pricing jcarousel-list jcarousel-list-horizontal team_div">
+				<ul
+					class="green pricing jcarousel-list jcarousel-list-horizontal team_div">
 					<li
 						class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal team_div"
 						jcarouselindex="2"
 						style="float: left; list-style: none; margin-right: 0px !important;">
-						<ul>
+						<ul style="height: 270px;">
 							<li class="title" style="height: 60px;">
 								<h3>
 									${team.team_name}
 								</h3>
 							</li>
+
 							<li class="divider"></li>
+							<li>
+								<spring:message code="manager" />
+								:${loginu.user_name}
+							</li>
 							<li>
 								<spring:message code="team_money" />
 								:${team.team_money}
@@ -77,12 +80,61 @@
 								<spring:message code="ev" />
 								:${team.ev}
 							</li>
-							<li></li>
+							<li>
+
+								<c:if test="${empty team_players and not empty loginu}">
+									<a href="#" id="tomarket"><spring:message code="noplayer" />
+									</a>
+								</c:if>
+
+								<c:if test="${not_enough_player}">
+									<a href="#" id="tomarket"><spring:message
+											code="not_enough_player" /> </a>
+								</c:if>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+				<ul
+					class="green pricing jcarousel-list jcarousel-list-horizontal team_div">
+					<li
+						class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal team_div"
+						jcarouselindex="2"
+						style="float: left; list-style: none; margin-right: 0px !important;">
+						<ul style="height: 270px;">
+							<li class="title"
+								style="height: 110px; background-color: #FF8800 !important;">
+								<h3>
+									${team.arena.arena_name}&nbsp;&nbsp;
+									<img src="resources/images/arena/${team.arena.arena_img}"
+										width="80" height="80" alt="testimonial"  class="boxed">
+								</h3>
+
+
+							</li>
+							<li class="divider"></li>
+							<li>
+								<spring:message code="arena_level" />
+								:${team.arena.eq_level}
+							</li>
+							<li>
+								<spring:message code="arena_cap" />
+								:${team.arena.cap}
+							</li>
+							<li>
+								<spring:message code="arena_attend" />
+								:${team.arena.attendance}
+							</li>
+							<li style="padding: 10px 20px 10px 20px; text-align: left;">
+								<spring:message code="arena_in" />
+								:${team.arena.today_in}
+							</li>
 						</ul>
 					</li>
 				</ul>
 			</c:if>
-
 		</c:if>
 	</div>
 
@@ -91,7 +143,8 @@
 		<div class="team_player_container" style="float: left;">
 			<c:if test="${not empty team_players}">
 				<c:forEach items="${team_players}" var="player" varStatus="status">
-					<ul class="green pricing jcarousel-list jcarousel-list-horizontal team_player_div"
+					<ul
+						class="green pricing jcarousel-list jcarousel-list-horizontal team_player_div"
 						style="width: 218px; float: left; margin-top: 10px; height: 550px">
 						<li
 							class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"
@@ -205,11 +258,7 @@
 					</ul>
 				</c:forEach>
 			</c:if>
-			<c:if test="${empty team_players and not empty loginu}">
-				<a class="button" href="#"
-					style="margin-top: 50px; margin-left: 100px; padding: 20px"
-					id="tomarket"><spring:message code="noplayer" /> </a>
-			</c:if>
+
 		</div>
 	</c:if>
 

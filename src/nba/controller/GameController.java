@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nba.entity.Arena;
 import nba.entity.Player;
 import nba.entity.Team;
 import nba.entity.User;
@@ -24,28 +25,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/game")
 public class GameController {
 
-	
-	@SuppressWarnings({"unchecked", "rawtypes" })
-	public void DealData(List<Player> playerList,HttpServletRequest request) throws Exception, NoSuchMethodException {
-		
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void DealData(List<Player> playerList, HttpServletRequest request)
+			throws Exception, NoSuchMethodException {
+
 		Class pc = Player.class;
 		Field[] fields = pc.getDeclaredFields();
-		
+
 		for (Player player : playerList) {
 
 			for (Field f : fields) {
-				String m_name = f.getName().substring(0, 1).toUpperCase()+f.getName().substring(1, f.getName().length());
-				Method getM = pc.getMethod("get"+m_name);
+				String m_name = f.getName().substring(0, 1).toUpperCase()
+						+ f.getName().substring(1, f.getName().length());
+				Method getM = pc.getMethod("get" + m_name);
 				Object value = getM.invoke(player);
-				if(value==null){
-					Method setM = pc.getMethod("set"+m_name, String.class);
+				if (value == null) {
+					Method setM = pc.getMethod("set" + m_name, String.class);
 					setM.invoke(player, Message.getMessage(request, "no_data"));
 				}
-				
+
 			}
 		}
 	}
-	
+
 	@RequestMapping("/myteam/")
 	public String myteam(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -63,10 +65,14 @@ public class GameController {
 					List<Player> playerList = gameService
 							.getPlayersByTeam(team);
 					gameService.setImgSrc(playerList);
-					
-					DealData(playerList,request);
-					
+
+					DealData(playerList, request);
+
 					request.setAttribute("team_players", playerList);
+
+					if (playerList.size() != 5) {
+						request.setAttribute("not_enough_player", true);
+					}
 				}
 			}
 		}
@@ -84,10 +90,19 @@ public class GameController {
 		String team_name = request.getParameter("team_name");
 
 		Team team = new Team(user.getId(), team_name);
-		
+
 		team.setEv(0);
-		team.setTeam_money(10000);
+		team.setTeam_money(20000);
 		
+		//创建球馆
+		Arena arena = new Arena();
+		arena.setArena_name(user.getUser_name()+Message.getMessage(request, "default_arena_name"));
+		arena.setEq_level(1);
+		arena.setCap_level(1);
+		
+		team.setArena(arena);
+		arena.setTeam(team);
+
 		String res = gameService.CreateTeam(team);
 
 		JsonTool jt = JsonTool.getJson(res);
