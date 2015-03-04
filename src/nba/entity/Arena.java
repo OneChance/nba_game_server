@@ -25,7 +25,6 @@ public class Arena {
 	@JoinColumn(name="team_id")
 	private Team team;
 	
-	@Transient
 	private Integer today_in;
 
 	public Team getTeam() {

@@ -28,7 +28,6 @@ import nba.tool.Code;
 public class GameService extends DatabaseService {
 
 	public static int SAL_RATIO = 1;
-	public static int STANDARD_EV = 150;
 
 	public Team getTeamByUser(User user) throws Exception {
 
@@ -54,6 +53,21 @@ public class GameService extends DatabaseService {
 			return team_player_ids;
 		}
 		return "";
+	}
+
+	public Map<String, Integer> getPlayerSalByTeam(Team team) {
+
+		Map<String, Integer> player_sign_sale = new HashMap<String, Integer>();
+
+		String players = team.getPlayers();
+		if (players != null && !players.equals("")) {
+			String[] playerArray = players.split("@");
+			for (String p : playerArray) {
+				player_sign_sale.put(p.split("-")[0],
+						Integer.parseInt(p.split("-")[2]));
+			}
+		}
+		return player_sign_sale;
 	}
 
 	public List<Player> getPlayersByTeam(Team team) throws Exception {
@@ -247,15 +261,6 @@ public class GameService extends DatabaseService {
 	}
 
 	public void setImgSrc(List<Player> playerList) {
-		/*
-		 * for (Player player : playerList) { if (player.getImg_src() != null &&
-		 * !player.getImg_src().equals("")) { String[] srcpaths =
-		 * player.getImg_src().split("\\\\");
-		 * player.setImg_src(srcpaths[srcpaths.length - 1]); } }
-		 */
-	}
-
-	public static void main(String[] args) {
 
 	}
 
@@ -263,10 +268,14 @@ public class GameService extends DatabaseService {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("HH");
 		String hour = sdf.format(new Date());
-		if (Integer.parseInt(hour) >= 9) {
+		if (Integer.parseInt(hour) >= 15) {
 			return true;
 		}
 		return false;
+	}
+
+	public static void main(String[] args) {
+
 	}
 
 	public List<GameData> GetGamedataByCondition(String condition) {
@@ -303,75 +312,80 @@ public class GameService extends DatabaseService {
 
 		for (Team team : teams) {
 			String player_ids = this.getIdsFromTeam(team);
+			Map<String, Integer> player_sign_sale = getPlayerSalByTeam(team);
 
 			if (!player_ids.equals("")) {
-				int ev_sum = 0;
-				int fans_change = 0;
 
 				String[] player_id_array = player_ids.split(",");
 
-				for (String player_id : player_id_array) {
-					
-					int player_ev = player_ev.get(player_id);
-					
-					if (player_ev.get(player_id) != null) {
-						if (player_id_array.length == 5) {
-							//球队人数不满
-							ev_sum += player_ev.get(player_id);
-						}
-						
-						// 根据ev计算人气变化
+				if (player_id_array.length == 5) { // 球队有5人 才结算工资，获得比赛收益， 变动人气
+
+					int fans_change = 0;
+					int pay_sum = 0;
+					int today_ingame_sal_sum = 0;// 今天参加比赛的球员
+					int current_sal_sum = 0;
+
+					for (String player_id : player_id_array) {
+
 						Player player = playerMap.get(player_id);
-						fans_change += calFanNumByEv(player.getSal(), ev_sum);
+
+						if (player_ev.get(player_id) != null) { // 该球员今天有比赛
+
+							// 根据ev计算人气变化
+							fans_change += calFanNumByEv(player_ev
+									.get(player_id));
+
+							// 只要有比赛，无论是否上场，效率高低，都要支付工资
+							pay_sum += player_sign_sale.get(player_id) == null ? 0
+									: player_sign_sale.get(player_id);
+
+							today_ingame_sal_sum += player.getSal();
+
+						}
+
+						current_sal_sum += player.getSal();
+
 					}
-					
+
+					team.setTeam_money(team.getTeam_money() - pay_sum);
+
+					calTodayIn(team, (double) today_ingame_sal_sum
+							/ (double) current_sal_sum);
+
+					// 记录当天收益
+
+					team.setEv(team.getEv() + fans_change);
+
+					if (fans_change > 0) {
+						team.setFans_change_state("up");
+					} else {
+						team.setFans_change_state("down");
+					}
+
+					updateTeam.add(team);
 				}
 
-				// 支付球员工资
-				payPlayer(team);
-
-				// 记录当天收益
-
-				team.setEv(team.getEv() + fans_change);
-
-				if (fans_change > 0) {
-					team.setFans_change_state("up");
-				} else {
-					team.setFans_change_state("down");
-				}
-
-				updateTeam.add(team);
 			}
 		}
 
 		if (updateTeam.size() > 0) {
 			this.merge(updateTeam);
 		}
+
+		System.out.println("cal over!!!!!!!!!!");
 	}
 
 	private int calTicketsPrice(int fans) {
-		// 返回球迷总数的平方根
+		// 球迷总数的平方根
 		return (int) Math.round(Math.sqrt(fans));
 	}
 
-	public int calFanNumByEv(int current_sal, int ev) {
+	public int calFanNumByEv(int ev) {
 
-		if (ev < 0) {
-			return ev;
-		} else {
-
-			int offset = current_sal / ev - STANDARD_EV;
-			if (offset < 0) {
-				// 球迷增长
-				return offset / 10;
-			} else {
-				// 球迷减少
-				return -1 * offset / 100;
-			}
-		}
+		return ev;
 	}
 
-	public void calTodayIn(Team team) {
+	public void calTodayIn(Team team, double ev_contribute_ratio) {
 
 		// 根据当前人气值，计算当天比赛球票价格
 		int tickets_price = calTicketsPrice(team.getEv());
@@ -381,15 +395,9 @@ public class GameService extends DatabaseService {
 		// 到场观众数
 		int fans_in = (int) (arena.getCap() * arena.getAttendance());
 
-		arena.setToday_in(tickets_price * fans_in);
+		// 今日有比赛球员
+		arena.setToday_in((int) (tickets_price * fans_in * ev_contribute_ratio));
 
-	}
-
-	public void calTodayIn(Team team){
-		String players = team.getPlayers();
-		if(players)
-		int sal_sum = 0 ;
-		
 	}
 
 	public void GameDataGet() throws Exception {

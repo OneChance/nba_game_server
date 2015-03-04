@@ -91,14 +91,14 @@
 		</property>
 	</bean>
 	
-	<!-- 结算触发器 -->
+	<!-- 结算触发器  0 50 14 ? * * -->
 	<bean id="evCalTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail">
 			<ref bean="evCalJob" />
 		</property>
 		<!-- ev 结算时间 -->
 		<property name="cronExpression">
-			<value>0 50 14 ? * *</value>
+			<value> 0 50 14 ? * *</value>
 		</property>
 	</bean>
 	

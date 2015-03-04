@@ -60,7 +60,7 @@ public class Team {
 	}
 
 	public void setEv(Integer ev) {
-		if (ev == null)
+		if (ev == null || ev < 0)
 			ev = 0;
 		this.ev = ev;
 	}

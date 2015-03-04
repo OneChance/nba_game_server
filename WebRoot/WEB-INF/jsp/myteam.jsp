@@ -20,7 +20,7 @@
 	<div class="feedback-index fi-left ">
 
 		<c:if test="${empty loginu}">
-			<form>
+			<form style="margin-top: 50px;">
 				<div class="fb-rows">
 					<input id="user_name" class="fb-ipt"
 						placeholder="<spring:message code="user_name"/>:" type="text">
