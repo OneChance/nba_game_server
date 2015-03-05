@@ -17,10 +17,10 @@
 
 <div class="container">
 
-	<div class="feedback-index" style="width: 100%">
+	<div class="feedback-index">
 		<div class="domainlook">
 			<fieldset>
-				<div class="domaintitle" style="float: left">
+				<div class="domaintitle">
 					<spring:message code="player_position" />
 				</div>
 				<select id="pos_select" name="extension" class="select"
@@ -37,8 +37,7 @@
 					<option value='后卫'>
 						<spring:message code='pos_g' />
 					</option>
-				</select>
-				<input class="fb-btn" type="button" onclick="search();"
+				</select> <input class="fb-btn" type="button" onclick="search();"
 					value="<spring:message code='button_search' />">
 			</fieldset>
 		</div>
@@ -49,12 +48,10 @@
 	<c:forEach items="${playerList}" var="player" varStatus="status">
 		<div class="my-team">
 			<c:if test="${not empty playerList}">
-				<ul class="green pricing jcarousel-list jcarousel-list-horizontal"
-					style="width: 200px;">
+				<ul class="green pricing jcarousel-list jcarousel-list-horizontal">
 					<li
-						class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"
-						jcarouselindex="2"
-						style="float: left; list-style: none; width: 200px;height:324px;">
+						class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal player-card"
+						jcarouselindex="2">
 						<ul>
 							<li class="title">
 								<div class="contain">
@@ -63,30 +60,19 @@
 									<div class="spinner"
 										style="opacity: 0; transform: rotate(2160deg) scale(1, 1);"></div>
 								</div>
-								<h3>
-									${player.player_name}
-								</h3>
-							<li>
-								<spring:message code='player_position' />
-								:${player.pos}
-							</li>
-							<li>
-								<spring:message code='salary' />
-								:${player.sal}
-							</li>
-							<li>
-								<c:if test="${tradeAble}">
+								<h3>${player.player_name}</h3>
+							<li><spring:message code='player_position' />
+								:${player.pos}</li>
+							<li><spring:message code='salary' /> :${player.sal}</li>
+							<li><c:if test="${tradeAble}">
 									<a href="#"
 										onclick="sign_player('${player.player_id}','<spring:message code="confirm_sign"/>')"><spring:message
-											code='sign' />
-									</a>
-								</c:if>
-								<c:if test="${! tradeAble}">
+											code='sign' /> </a>
+								</c:if> <c:if test="${! tradeAble}">
 									<h1>
 										<spring:message code="trade_able_time" />
 									</h1>
-								</c:if>
-							</li>
+								</c:if></li>
 						</ul>
 					</li>
 				</ul>

@@ -17,6 +17,12 @@
 </script>
 
 <div class="container">
+
+	<c:if test="${not_enough_player}">
+		<a class="game-tip" href="#" id="tomarket"><spring:message
+				code="not_enough_player" /> </a>
+	</c:if>
+
 	<div class="feedback-index fi-left ">
 
 		<c:if test="${empty loginu}">
@@ -62,38 +68,21 @@
 						style="float: left; list-style: none; margin-right: 0px !important;">
 						<ul style="height: 285px;">
 							<li class="title" style="height: 60px;">
-								<h3>
-									${team.team_name}
-								</h3>
+								<h3>${team.team_name}</h3>
 							</li>
 
 							<li class="divider"></li>
-							<li>
-								<spring:message code="manager" />
-								:${loginu.user_name}
+							<li><spring:message code="manager" /> :${loginu.user_name}
 							</li>
-							<li>
-								<spring:message code="team_money" />
-								:
-								<i class="fa fa-dollar"></i>${team.team_money}
-							</li>
-							<li>
-								<spring:message code="ev" />
-								:${team.ev}
-							</li>
-							<li>
-								<spring:message code="arena_in" />
-								:
-								<i class="fa fa-dollar"></i>${team.dil.arena_in}
-							</li>
-							<li>
-								<spring:message code="player_sal_all" />
-								:
-								<i class="fa fa-dollar"></i>${team.dil.pay}
-							</li>
+							<li><spring:message code="team_money" /> : <i
+								class="fa fa-dollar"></i>${team.team_money}</li>
+							<li><spring:message code="ev" /> :${team.ev}</li>
+							<li><spring:message code="arena_in" /> : <i
+								class="fa fa-dollar"></i>${team.dil.arena_in}</li>
+							<li><spring:message code="player_sal_all" /> : <i
+								class="fa fa-dollar"></i>${team.dil.pay}</li>
 							<li style="padding: 10px 20px 10px 20px; text-align: left;">
-								<spring:message code="today_profit" />
-								:${team.dil.profit}
+								<spring:message code="today_profit" /> :${team.dil.profit}
 							</li>
 						</ul>
 					</li>
@@ -110,26 +99,24 @@
 							<li class="title"
 								style="height: 110px; background-color: #FF8800 !important;">
 								<h3>
-									${team.arena.arena_name}&nbsp;&nbsp;
-									<img src="resources/images/arena/${team.arena.arena_img}"
+									${team.arena.arena_name}&nbsp;&nbsp; <img
+										src="resources/images/arena/${team.arena.arena_img}"
 										width="80" height="80" alt="testimonial" class="boxed">
 								</h3>
 
 
 							</li>
 							<li class="divider"></li>
-							<li>
-								<spring:message code="arena_cap" />
-								:${team.arena.cap} &nbsp;&nbsp;
-								<c:if test="${tradeAble and team.arena.cap_level<10}">
+							<li><spring:message code="arena_cap" /> :${team.arena.cap}
+								&nbsp;&nbsp; <c:if
+									test="${tradeAble and team.arena.cap_level<10}">
 									<i class="fa fa-wrench fa-cursor-right"
 										onclick="update_cap(${team.arena.cap_level})"></i>
-								</c:if>
-							</li>
+								</c:if></li>
 							<li style="padding: 10px 20px 10px 20px; text-align: left;">
 								<spring:message code="arena_attend" />
-								:${team.arena.attendance} &nbsp;&nbsp;
-								<c:if test="${tradeAble and team.arena.eq_level<10}">
+								:${team.arena.attendance} &nbsp;&nbsp; <c:if
+									test="${tradeAble and team.arena.eq_level<10}">
 									<i class="fa fa-subway fa-cursor-right"
 										onclick="update_eq(${team.arena.eq_level})"></i>
 								</c:if>
@@ -162,101 +149,39 @@
 										<div class="spinner"
 											style="opacity: 0; transform: rotate(2160deg) scale(1, 1);"></div>
 									</div>
-									<h3>
-										${player.player_name}
-									</h3>
+									<h3>${player.player_name}</h3>
 								<li class="divider"></li>
-								<li>
-									<spring:message code='player_position' />
-									:${player.pos}
-								</li>
-								<li>
-									<spring:message code='salary' />
-									:
-									<h8>
-									${player.sal}
-									</h8>
-								</li>
+								<li><spring:message code='player_position' />
+									:${player.pos}</li>
+								<li><spring:message code='salary' /> : <h8>
+									${player.sal} </h8></li>
 
-								<li>
-									<spring:message code='shoot' />
-									:
-									<h8>
-									${player.shoot}
-									</h8>
-									&nbsp;&nbsp;
-									<spring:message code='free_throw' />
-									:
-									<h8>
-									${player.free_throw}
-									</h8>
-								</li>
-								<li>
-									<spring:message code='rebound' />
-									:
-									<h8>
-									${player.rebound}
-									</h8>
-									&nbsp;&nbsp;
-									<spring:message code='assist' />
-									:
-									<h8>
-									${player.assist}
-									</h8>
-								</li>
-								<li>
-									<spring:message code='steal' />
-									:
-									<h8>
-									${player.steal}
-									</h8>
-									&nbsp;&nbsp;
-									<spring:message code='block' />
-									:
-									<h8>
-									${player.block}
-									</h8>
-								</li>
-								<li>
-									<spring:message code='fault' />
-									:
-									<h8>
-									${player.fault}
-									</h8>
-									&nbsp;&nbsp;
-									<spring:message code='foul' />
-									:
-									<h8>
-									${player.foul}
-									</h8>
-								</li>
-								<li>
-									<spring:message code='point' />
-									:
-									<h8>
-									${player.point}
-									</h8>
-								</li>
-								<li>
-									<spring:message code='today_ev' />
-									:
-									<h8>
-									${player.ev}
-									</h8>
-								</li>
+								<li><spring:message code='shoot' /> : <h8>
+									${player.shoot} </h8> &nbsp;&nbsp; <spring:message code='free_throw' />
+									: <h8> ${player.free_throw} </h8></li>
+								<li><spring:message code='rebound' /> : <h8>
+									${player.rebound} </h8> &nbsp;&nbsp; <spring:message code='assist' />
+									: <h8> ${player.assist} </h8></li>
+								<li><spring:message code='steal' /> : <h8>
+									${player.steal} </h8> &nbsp;&nbsp; <spring:message code='block' />
+									: <h8> ${player.block} </h8></li>
+								<li><spring:message code='fault' /> : <h8>
+									${player.fault} </h8> &nbsp;&nbsp; <spring:message code='foul' /> :
+									<h8> ${player.foul} </h8></li>
+								<li><spring:message code='point' /> : <h8>
+									${player.point} </h8></li>
+								<li><spring:message code='today_ev' /> : <h8>
+									${player.ev} </h8></li>
 
-								<li>
-									<c:if test="${tradeAble}">
+								<li><c:if test="${tradeAble}">
 										<a href="#"
 											onclick="unsign_player('${player.player_id}','<spring:message code="confirm_unsign"/>')"><spring:message
 												code='unsign' /> </a>
-									</c:if>
-									<c:if test="${! tradeAble}">
+									</c:if> <c:if test="${! tradeAble}">
 										<h1>
 											<spring:message code="trade_able_time" />
 										</h1>
-									</c:if>
-								</li>
+									</c:if></li>
 							</ul>
 						</li>
 					</ul>
