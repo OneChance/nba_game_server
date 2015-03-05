@@ -17,6 +17,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import nba.entity.Arena;
+import nba.entity.DayInLog;
 import nba.entity.GameData;
 import nba.entity.Player;
 import nba.entity.Team;
@@ -309,6 +310,7 @@ public class GameService extends DatabaseService {
 		}
 
 		List<Team> updateTeam = new ArrayList<Team>();
+		List<DayInLog> logList = new ArrayList<DayInLog>();
 
 		for (Team team : teams) {
 			String player_ids = this.getIdsFromTeam(team);
@@ -322,8 +324,9 @@ public class GameService extends DatabaseService {
 
 					int fans_change = 0;
 					int pay_sum = 0;
-					int today_ingame_sal_sum = 0;// 今天参加比赛的球员
+					int today_ingame_sal_sum = 0;// 今天球队有比赛的球员当前市场工资总额
 					int current_sal_sum = 0;
+					int ev_sum = 0;
 
 					for (String player_id : player_id_array) {
 
@@ -335,11 +338,13 @@ public class GameService extends DatabaseService {
 							fans_change += calFanNumByEv(player_ev
 									.get(player_id));
 
-							// 只要有比赛，无论是否上场，效率高低，都要支付工资
+							// 只要球队有比赛，就要支付工资(签约时工资)
 							pay_sum += player_sign_sale.get(player_id) == null ? 0
 									: player_sign_sale.get(player_id);
 
 							today_ingame_sal_sum += player.getSal();
+
+							ev_sum += player_ev.get(player_id);
 
 						}
 
@@ -349,10 +354,9 @@ public class GameService extends DatabaseService {
 
 					team.setTeam_money(team.getTeam_money() - pay_sum);
 
-					calTodayIn(team, (double) today_ingame_sal_sum
-							/ (double) current_sal_sum);
-
-					// 记录当天收益
+					int today_in = calTodayIn(team,
+							(double) today_ingame_sal_sum
+									/ (double) current_sal_sum);
 
 					team.setEv(team.getEv() + fans_change);
 
@@ -363,14 +367,31 @@ public class GameService extends DatabaseService {
 					}
 
 					updateTeam.add(team);
+
+					// 记录当天收支情况
+					DayInLog dil = new DayInLog(ev_sum, fans_change, today_in,
+							pay_sum, (today_in - pay_sum),
+							sdf.format(new Date()), team.getId());
+
+					logList.add(dil);
 				}
 
 			}
 		}
 
+		Session session = this.getSessionFactory().openSession();
+		session.beginTransaction();
 		if (updateTeam.size() > 0) {
-			this.merge(updateTeam);
+			for (Team team : updateTeam) {
+				session.merge(team);
+			}
 		}
+		if (logList.size() > 0) {
+			for (DayInLog dil : logList) {
+				session.merge(dil);
+			}
+		}
+		session.getTransaction().commit();
 
 		System.out.println("cal over!!!!!!!!!!");
 	}
@@ -385,7 +406,7 @@ public class GameService extends DatabaseService {
 		return ev;
 	}
 
-	public void calTodayIn(Team team, double ev_contribute_ratio) {
+	public int calTodayIn(Team team, double ev_contribute_ratio) {
 
 		// 根据当前人气值，计算当天比赛球票价格
 		int tickets_price = calTicketsPrice(team.getEv());
@@ -396,7 +417,7 @@ public class GameService extends DatabaseService {
 		int fans_in = (int) (arena.getCap() * arena.getAttendance());
 
 		// 今日有比赛球员
-		arena.setToday_in((int) (tickets_price * fans_in * ev_contribute_ratio));
+		return (int) (tickets_price * fans_in * ev_contribute_ratio);
 
 	}
 
@@ -563,6 +584,16 @@ public class GameService extends DatabaseService {
 			player.setSal(sal);
 		}
 
+	}
+
+	public void getTodayInLogByTeam(Team team) throws Exception {
+		DayInLog dil = this.get(DayInLog.class,
+				"select * from day_in_log where team_id=? and day_in_date=?",
+				new Object[] { team.getId(), getNowDate() });
+		if (dil == null) {
+			dil = new DayInLog();
+		}
+		team.setDil(dil);
 	}
 
 	private String getIdFromUrl(String url) {

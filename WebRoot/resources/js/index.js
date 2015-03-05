@@ -8,12 +8,14 @@ function reg(namenull, needpassword) {
 	if (!user_name) {
 		alert(namenull);
 		jQuery("#user_name").focus();
+		$(".loadingbg").hide();
 		return false;
 	}
 
 	else if (!password) {
 		alert(needpassword)
 		jQuery("#password").focus();
+		$(".loadingbg").hide();
 		return false;
 	}
 
@@ -48,12 +50,14 @@ function login(namenull, needpassword) {
 	if (!user_name) {
 		alert(namenull);
 		jQuery("#user_name").focus();
+		$(".loadingbg").hide();
 		return false;
 	}
 
 	else if (!password) {
 		alert(needpassword)
 		jQuery("#password").focus();
+		$(".loadingbg").hide();
 		return false;
 	}
 
@@ -83,6 +87,7 @@ function create_team(teamnamenull) {
 	if (!team_name) {
 		alert(teamnamenull);
 		jQuery("#team_name").focus();
+		$(".loadingbg").hide();
 		return false;
 	}
 

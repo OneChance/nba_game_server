@@ -98,7 +98,7 @@
 		</property>
 		<!-- ev 结算时间 -->
 		<property name="cronExpression">
-			<value> 0 50 14 ? * *</value>
+			<value> 0 55 10 ? * *</value>
 		</property>
 	</bean>
 	

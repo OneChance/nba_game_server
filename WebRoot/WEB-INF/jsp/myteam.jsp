@@ -20,7 +20,7 @@
 	<div class="feedback-index fi-left ">
 
 		<c:if test="${empty loginu}">
-			<form style="margin-top: 50px;">
+			<form>
 				<div class="fb-rows">
 					<input id="user_name" class="fb-ipt"
 						placeholder="<spring:message code="user_name"/>:" type="text">
@@ -60,7 +60,7 @@
 						class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal team_div"
 						jcarouselindex="2"
 						style="float: left; list-style: none; margin-right: 0px !important;">
-						<ul style="height: 270px;">
+						<ul style="height: 285px;">
 							<li class="title" style="height: 60px;">
 								<h3>
 									${team.team_name}
@@ -81,16 +81,16 @@
 								:${team.ev}
 							</li>
 							<li>
-
-								<c:if test="${empty team_players and not empty loginu}">
-									<a href="#" id="tomarket"><spring:message code="noplayer" />
-									</a>
-								</c:if>
-
-								<c:if test="${not_enough_player}">
-									<a href="#" id="tomarket"><spring:message
-											code="not_enough_player" /> </a>
-								</c:if>
+								<spring:message code="arena_in" />
+								:${team.dil.arena_in}
+							</li>
+							<li>
+								<spring:message code="player_sal_all" />
+								:${team.dil.pay}
+							</li>
+							<li style="padding: 10px 20px 10px 20px; text-align: left;">
+								<spring:message code="today_profit" />
+								:${team.dil.profit}
 							</li>
 						</ul>
 					</li>
@@ -103,13 +103,13 @@
 						class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal team_div"
 						jcarouselindex="2"
 						style="float: left; list-style: none; margin-right: 0px !important;">
-						<ul style="height: 270px;">
+						<ul style="height: 230px;">
 							<li class="title"
 								style="height: 110px; background-color: #FF8800 !important;">
 								<h3>
 									${team.arena.arena_name}&nbsp;&nbsp;
 									<img src="resources/images/arena/${team.arena.arena_img}"
-										width="80" height="80" alt="testimonial"  class="boxed">
+										width="80" height="80" alt="testimonial" class="boxed">
 								</h3>
 
 
@@ -121,19 +121,18 @@
 							</li>
 							<li>
 								<spring:message code="arena_cap" />
-								:${team.arena.cap}
-							</li>
-							<li>
-								<spring:message code="arena_attend" />
-								:${team.arena.attendance}
+								:${team.arena.cap} &nbsp;&nbsp;
+
+								<i class="fa fa-wrench fa-cursor"></i>
 							</li>
 							<li style="padding: 10px 20px 10px 20px; text-align: left;">
-								<spring:message code="arena_in" />
-								:${team.arena.today_in}
+								<spring:message code="arena_attend" />
+								:${team.arena.attendance}
 							</li>
 						</ul>
 					</li>
 				</ul>
+
 			</c:if>
 		</c:if>
 	</div>

@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<title>NBA MANAGER</title>
 
-		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=8">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="renderer" content="webkit">
@@ -18,8 +18,6 @@
 
 		<link href="resources/css/reset.css" rel="stylesheet" type="text/css">
 		<link href="resources/css/style.css" rel="stylesheet" type="text/css">
-		
-		
 		<link href="resources/css/magicwall.css" rel="stylesheet"
 			type="text/css">
 		<link href="resources/css/style_1580.css" rel="stylesheet"
@@ -30,10 +28,8 @@
 			type="text/css">
 		<link href="resources/css/style_768.css" rel="stylesheet"
 			type="text/css">
-
 		<link href="resources/css/style_retina.css" rel="stylesheet"
 			type="text/css">
-
 		<link href="resources/css/nbagame.css" rel="stylesheet"
 			type="text/css">
 

@@ -29,6 +29,17 @@ public class Team {
 	@Transient
 	private String fans_change_state;
 
+	@Transient
+	private DayInLog dil;
+
+	public DayInLog getDil() {
+		return dil;
+	}
+
+	public void setDil(DayInLog dil) {
+		this.dil = dil;
+	}
+
 	public Arena getArena() {
 		return arena;
 	}

@@ -6,8 +6,6 @@
 	float: left;
 }
 
-
-
 .fi-left {
 	position: relative;
 	margin-top: 0px;
@@ -438,7 +436,6 @@ ul.pricing li ul li:nth-child(even) {
 
 ul.pricing li ul li:last-child {
 	text-align: center;
-	padding: 20px;
 }
 
 ul.pricing li a {

@@ -22,9 +22,9 @@ public class Arena {
 	private String arena_img;
 
 	@OneToOne(optional = false)
-	@JoinColumn(name="team_id")
+	@JoinColumn(name = "team_id")
 	private Team team;
-	
+
 	private Integer today_in;
 
 	public Team getTeam() {
@@ -36,14 +36,14 @@ public class Arena {
 	}
 
 	public Integer getToday_in() {
+		if (today_in == null)
+			today_in = 0;
 		return today_in;
 	}
 
 	public void setToday_in(Integer today_in) {
 		this.today_in = today_in;
 	}
-
-
 
 	// 球馆设施级别(提升上座率)
 	private Integer eq_level;
@@ -55,10 +55,10 @@ public class Arena {
 	}
 
 	public void setCap_level(Integer cap_level) {
-		
+
 		this.arena_img = cap_level + ".jpg";
 		this.cap = cap_level * cap_level * 500;
-		
+
 		this.cap_level = cap_level;
 	}
 

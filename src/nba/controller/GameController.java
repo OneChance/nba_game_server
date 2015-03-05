@@ -61,6 +61,9 @@ public class GameController {
 			request.getSession().setAttribute("team", team);
 
 			if (team != null) {
+
+				gameService.getTodayInLogByTeam(team);
+
 				if (team.getPlayers() != null && !team.getPlayers().equals("")) {
 					List<Player> playerList = gameService
 							.getPlayersByTeam(team);
@@ -91,15 +94,16 @@ public class GameController {
 
 		Team team = new Team(user.getId(), team_name);
 
-		team.setEv(0);
+		team.setEv(100);
 		team.setTeam_money(20000);
-		
-		//创建球馆
+
+		// 创建球馆
 		Arena arena = new Arena();
-		arena.setArena_name(user.getUser_name()+Message.getMessage(request, "default_arena_name"));
+		arena.setArena_name(user.getUser_name()
+				+ Message.getMessage(request, "default_arena_name"));
 		arena.setEq_level(1);
 		arena.setCap_level(1);
-		
+
 		team.setArena(arena);
 		arena.setTeam(team);
 

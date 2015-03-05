@@ -5,7 +5,7 @@
 
 
 <div class="container">
-	<div class="feedback-index fi-center">
+	<div class="feedback-index fi-left">
 		<form>
 			<div class="fb-rows">
 				<input id="user_name" class="fb-ipt"
