@@ -393,7 +393,6 @@ public class GameService extends DatabaseService {
 		}
 		session.getTransaction().commit();
 
-		System.out.println("cal over!!!!!!!!!!");
 	}
 
 	private int calTicketsPrice(int fans) {

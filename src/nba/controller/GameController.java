@@ -213,6 +213,66 @@ public class GameController {
 
 	}
 
+	@RequestMapping("/update_cap/")
+	public void UpdateCap(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		String res = "";
+
+		User user = accountService.getLoginUser(request);
+		Team team = gameService.getTeamByUser(user);
+		Arena arena = team.getArena();
+
+		int update_money = arena.getCap_level() * arena.getCap_level() * 5000;
+
+		if (team.getTeam_money() <= update_money) {
+			res = Code.NOTENOUGHMONEY;
+		} else {
+			arena.setCap_level(arena.getCap_level() + 1);
+			team.setTeam_money(team.getTeam_money() - update_money);
+			gameService.merge(team);
+			res = Code.UPDATEOK;
+		}
+
+		JsonTool jt = JsonTool.getJson(res);
+
+		if (!res.equals(Code.UPDATEOK)) {
+			jt.setMessage(Message.getMessage(request, res));
+		}
+
+		jt.write(response);
+	}
+
+	@RequestMapping("/update_eq/")
+	public void UpdateEq(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		String res = "";
+
+		User user = accountService.getLoginUser(request);
+		Team team = gameService.getTeamByUser(user);
+		Arena arena = team.getArena();
+
+		int update_money = arena.getEq_level() * arena.getEq_level() * 5000;
+
+		if (team.getTeam_money() <= update_money) {
+			res = Code.NOTENOUGHMONEY;
+		} else {
+			arena.setEq_level(arena.getEq_level() + 1);
+			team.setTeam_money(team.getTeam_money() - update_money);
+			gameService.merge(team);
+			res = Code.UPDATEOK;
+		}
+
+		JsonTool jt = JsonTool.getJson(res);
+
+		if (!res.equals(Code.UPDATEOK)) {
+			jt.setMessage(Message.getMessage(request, res));
+		}
+
+		jt.write(response);
+	}
+
 	@Resource
 	private AccountService accountService;
 	@Resource

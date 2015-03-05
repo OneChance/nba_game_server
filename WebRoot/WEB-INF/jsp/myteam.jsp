@@ -74,7 +74,8 @@
 							</li>
 							<li>
 								<spring:message code="team_money" />
-								:${team.team_money}
+								:
+								<i class="fa fa-dollar"></i>${team.team_money}
 							</li>
 							<li>
 								<spring:message code="ev" />
@@ -82,11 +83,13 @@
 							</li>
 							<li>
 								<spring:message code="arena_in" />
-								:${team.dil.arena_in}
+								:
+								<i class="fa fa-dollar"></i>${team.dil.arena_in}
 							</li>
 							<li>
 								<spring:message code="player_sal_all" />
-								:${team.dil.pay}
+								:
+								<i class="fa fa-dollar"></i>${team.dil.pay}
 							</li>
 							<li style="padding: 10px 20px 10px 20px; text-align: left;">
 								<spring:message code="today_profit" />
@@ -103,7 +106,7 @@
 						class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal team_div"
 						jcarouselindex="2"
 						style="float: left; list-style: none; margin-right: 0px !important;">
-						<ul style="height: 230px;">
+						<ul style="height: 210px;">
 							<li class="title"
 								style="height: 110px; background-color: #FF8800 !important;">
 								<h3>
@@ -116,18 +119,20 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-								<spring:message code="arena_level" />
-								:${team.arena.eq_level}
-							</li>
-							<li>
 								<spring:message code="arena_cap" />
 								:${team.arena.cap} &nbsp;&nbsp;
-
-								<i class="fa fa-wrench fa-cursor"></i>
+								<c:if test="${tradeAble and team.arena.cap_level<10}">
+									<i class="fa fa-wrench fa-cursor-right"
+										onclick="update_cap(${team.arena.cap_level})"></i>
+								</c:if>
 							</li>
 							<li style="padding: 10px 20px 10px 20px; text-align: left;">
 								<spring:message code="arena_attend" />
-								:${team.arena.attendance}
+								:${team.arena.attendance} &nbsp;&nbsp;
+								<c:if test="${tradeAble and team.arena.eq_level<10}">
+									<i class="fa fa-subway fa-cursor-right"
+										onclick="update_eq(${team.arena.eq_level})"></i>
+								</c:if>
 							</li>
 						</ul>
 					</li>

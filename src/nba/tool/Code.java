@@ -22,4 +22,6 @@ public class Code {
 	
 	public static String UNSIGNOK = "unsign_ok";
 	public static String OPERFIAL = "oper_fail";
+	
+	public static String UPDATEOK = "update_ok";
 }

@@ -32,6 +32,7 @@
 			type="text/css">
 		<link href="resources/css/nbagame.css" rel="stylesheet"
 			type="text/css">
+		<link rel="stylesheet" href="resources/css/font-awesome.min.css">	
 
 	</head>
 	<body>
@@ -122,6 +123,13 @@
 		$(".loadingbg").hide();
 		$("#mainframe").load("game/myteam/");
 	});
+	
+	//设置国际化变量
+	var confirm_update_cap = "<spring:message code="update_cap"/>";
+	var confirm_update_eq = "<spring:message code="update_eq"/>";
 </script>
+
+
+
 	</body>
 </html>

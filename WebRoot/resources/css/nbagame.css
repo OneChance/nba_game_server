@@ -2,6 +2,11 @@
 	background-color: #CAC8C8;
 }
 
+.fa-cursor-right{
+	cursor:pointer;
+	float:right;
+}
+
 .feedback-index {
 	float: left;
 }
