@@ -83,5 +83,5 @@
 </div>
 
 <script>
-	$(".loadingbg").hide();
+	$("#loading").hide();
 </script>

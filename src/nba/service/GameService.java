@@ -395,7 +395,7 @@ public class GameService extends DatabaseService {
 
 	}
 
-	private int calTicketsPrice(int fans) {
+	public int calTicketsPrice(int fans) {
 		// 球迷总数的平方根
 		return (int) Math.round(Math.sqrt(fans));
 	}

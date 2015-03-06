@@ -2,12 +2,17 @@ package nba.controller;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nba.chart.ChartData;
+import nba.chart.Data;
+import nba.chart.Path;
 import nba.entity.Arena;
 import nba.entity.Player;
 import nba.entity.Team;
@@ -26,11 +31,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class GameController {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void DealData(List<Player> playerList, HttpServletRequest request)
-			throws Exception, NoSuchMethodException {
+	public void DealData(List<Player> playerList, HttpServletRequest request,
+			Team team) throws Exception, NoSuchMethodException {
 
 		Class pc = Player.class;
 		Field[] fields = pc.getDeclaredFields();
+		Map<String, Integer> sign_sal = gameService.getPlayerSalByTeam(team);
 
 		for (Player player : playerList) {
 
@@ -45,6 +51,13 @@ public class GameController {
 				}
 
 			}
+
+			// 填充签约金额
+			player.setSign_sal(sign_sal.get(player.getPlayer_id().toString()));
+
+			team.getArena().setTicket_price(
+					gameService.calTicketsPrice(team.getEv()));
+
 		}
 	}
 
@@ -69,7 +82,7 @@ public class GameController {
 							.getPlayersByTeam(team);
 					gameService.setImgSrc(playerList);
 
-					DealData(playerList, request);
+					DealData(playerList, request, team);
 
 					request.setAttribute("team_players", playerList);
 
@@ -271,6 +284,51 @@ public class GameController {
 		}
 
 		jt.write(response);
+	}
+
+	@RequestMapping("/chart/")
+	public String Chart(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		return "chart";
+	}
+
+	@RequestMapping("/get_chart/")
+	public void GetChart(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		User user = accountService.getLoginUser(request);
+
+		if (user != null) {
+
+			Team team = gameService.getTeamByUser(user);
+
+			request.getSession().setAttribute("team", team);
+
+			if (team != null) {
+				List<ChartData> cdList = new ArrayList<ChartData>();
+				ChartData cd = new ChartData();
+
+				List<Path> pathList = new ArrayList<Path>();
+				Path path = new Path();
+				path.setClassName(".main.l1");
+
+				List<Data> dataList = new ArrayList<Data>();
+				Data data = new Data();
+				data.setX("2015-03-06");
+				data.setY(2000);
+
+				dataList.add(data);
+
+				path.setData(dataList);
+				pathList.add(path);
+				cd.setMain(pathList);
+
+				cdList.add(cd);
+
+				JsonTool.getJson(cdList).write(response);
+			}
+		}
 	}
 
 	@Resource

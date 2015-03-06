@@ -2485,13 +2485,17 @@ img.count-background {
 	background: #2e2e2e;
 }
 
+.team_player_container {
+	margin-left: 10px;
+}
+
 .feedback-index,.contact-index {
 	display: inline-block;
 	text-align: left;
 	font-size: 12px;
 	letter-spacing: normal;
 	vertical-align: top;
-	margin: 0 45px;
+	margin-left:45px;
 }
 
 .feedback-index {

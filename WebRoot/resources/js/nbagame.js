@@ -23,7 +23,7 @@ var update_cap = function(current_level) {
 	confirm_update_cap = confirm_update_cap.replace(/cost_replace/, update_cost);
 	if (confirm(confirm_update_cap)) {
 		
-		$(".loadingbg").show();
+		$("#loading").show();
 		
 		jQuery.ajax({
 			type : "POST",
@@ -48,7 +48,7 @@ var update_eq = function(current_level) {
 	confirm_update_eq = confirm_update_eq.replace(/cost_replace/, update_cost);
 	if (confirm(confirm_update_eq)) {
 		
-		$(".loadingbg").show();
+		$("#loading").show();
 		
 		jQuery.ajax({
 			type : "POST",
@@ -65,4 +65,13 @@ var update_eq = function(current_level) {
 			}
 		});
 	}
+}
+
+var to_chart = function(){
+	$("#chart").show();
+	$("#chart_container").load("game/chart/");
+}
+
+var close_chart = function(){
+	$("#chart").hide();
 }

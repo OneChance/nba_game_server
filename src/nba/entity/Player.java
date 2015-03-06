@@ -19,7 +19,7 @@ public class Player {
 	private String img_src;
 
 	@Transient
-	private int sal_cur; // 签约工资
+	private int sign_sal; // 签约工资
 	@Transient
 	private String shoot;
 	@Transient
@@ -41,12 +41,12 @@ public class Player {
 	@Transient
 	private Integer ev;
 
-	public int getSal_cur() {
-		return sal_cur;
+	public int getSign_sal() {
+		return sign_sal;
 	}
 
-	public void setSal_cur(int sal_cur) {
-		this.sal_cur = sal_cur;
+	public void setSign_sal(int sign_sal) {
+		this.sign_sal = sign_sal;
 	}
 
 	public Integer getEv() {

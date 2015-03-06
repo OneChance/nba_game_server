@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "arena")
@@ -25,6 +26,17 @@ public class Arena {
 	private Team team;
 
 	private Integer today_in;
+	
+	@Transient
+	private Integer ticket_price;
+
+	public Integer getTicket_price() {
+		return ticket_price;
+	}
+
+	public void setTicket_price(Integer ticket_price) {
+		this.ticket_price = ticket_price;
+	}
 
 	public Team getTeam() {
 		return team;

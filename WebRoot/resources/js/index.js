@@ -1,6 +1,6 @@
 function reg(namenull, needpassword) {
 
-	$(".loadingbg").show();
+	$("#loading").show();
 	
 	var user_name = jQuery("#user_name").val();
 	var password = jQuery("#password").val();
@@ -8,14 +8,14 @@ function reg(namenull, needpassword) {
 	if (!user_name) {
 		alert(namenull);
 		jQuery("#user_name").focus();
-		$(".loadingbg").hide();
+		$("#loading").hide();
 		return false;
 	}
 
 	else if (!password) {
 		alert(needpassword)
 		jQuery("#password").focus();
-		$(".loadingbg").hide();
+		$("#loading").hide();
 		return false;
 	}
 
@@ -35,14 +35,14 @@ function reg(namenull, needpassword) {
 				jQuery("#team").click();
 			}
 			
-			$(".loadingbg").hide();
+			$("#loading").hide();
 		}	
 	});
 }
 
 function login(namenull, needpassword) {
 	
-	$(".loadingbg").show();
+	$("#loading").show();
 	
 	var user_name = jQuery("#user_name").val();
 	var password = jQuery("#password").val();
@@ -50,14 +50,14 @@ function login(namenull, needpassword) {
 	if (!user_name) {
 		alert(namenull);
 		jQuery("#user_name").focus();
-		$(".loadingbg").hide();
+		$("#loading").hide();
 		return false;
 	}
 
 	else if (!password) {
 		alert(needpassword)
 		jQuery("#password").focus();
-		$(".loadingbg").hide();
+		$("#loading").hide();
 		return false;
 	}
 
@@ -80,14 +80,14 @@ function login(namenull, needpassword) {
 
 function create_team(teamnamenull) {
 
-	$(".loadingbg").show();
+	$("#loading").show();
 	
 	var team_name = jQuery("#team_name").val();
 
 	if (!team_name) {
 		alert(teamnamenull);
 		jQuery("#team_name").focus();
-		$(".loadingbg").hide();
+		$("#loading").hide();
 		return false;
 	}
 
@@ -105,7 +105,7 @@ function create_team(teamnamenull) {
 				jQuery("#team").click();
 			}
 			
-			$(".loadingbg").hide();
+			$("#loading").hide();
 		}	
 		
 	});
@@ -119,7 +119,7 @@ function search() {
 function sign_player(player_id,confirm_sign) {
 	if (confirm(confirm_sign)) {
 		
-		$(".loadingbg").show();
+		$("#loading").show();
 		
 		var pos_select = jQuery("#pos_select").val();
 
@@ -138,7 +138,7 @@ function sign_player(player_id,confirm_sign) {
 							"game/market/?pos_select=" + pos_select);
 				}
 				
-				$(".loadingbg").hide();
+				$("#loading").hide();
 			}
 		});
 	}
@@ -148,7 +148,7 @@ function unsign_player(player_id, confirm_unsign) {
 
 	if (confirm(confirm_unsign)) {
 		
-		$(".loadingbg").show();
+		$("#loading").show();
 		
 		jQuery.ajax({
 			type : "POST",
@@ -163,7 +163,7 @@ function unsign_player(player_id, confirm_unsign) {
 				} else {
 					$("#mainframe").load("game/myteam/");
 				}
-				$(".loadingbg").hide();
+				$("#loading").hide();
 			}
 		});
 	}
