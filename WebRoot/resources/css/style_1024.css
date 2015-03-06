@@ -22,7 +22,6 @@
 	color:#fff;
 }
 
-
 .sidebtn {
 	display:block;
 	height:70px;
@@ -562,7 +561,9 @@
 }
 }
 	
-	
+.chartbg {
+	margin-top: 200px;
+}	
 	
 /* 响应式CSS END  */
 }

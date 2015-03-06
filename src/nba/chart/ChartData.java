@@ -13,7 +13,7 @@ public class ChartData {
 	public ChartData(){
 		this.setxScale("ordinal");
 		this.setyScale("linear");
-		this.setType("bar");
+		this.setType("line-dotted");
 		this.comp = new ArrayList<Comp>();
 	}
 	

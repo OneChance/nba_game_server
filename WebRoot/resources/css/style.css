@@ -3413,3 +3413,19 @@ px
 	left: 50%;
 	top: 40%;
 }
+
+.chartbg {
+	position: absolute;
+	z-index: 3;
+	width: 50%;
+	height: 50%;
+	background-color: #2C3437;
+	border: 5px solid #fff;
+	margin-left: 25%;
+	margin-top: 100px;
+	-webkit-border-radius: 10px;
+}
+
+.chartshade{
+	display:block;
+}

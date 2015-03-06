@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<div id="chart" class="shade">
+		<div id="chart" class="shade chartshade">
 			<div class="shadebg"></div>
 			<div class="chartbg" id="chart_container">
 
