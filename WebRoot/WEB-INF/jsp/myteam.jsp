@@ -168,7 +168,7 @@
 						<li
 							class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"
 							jcarouselindex="2"
-							style="float: left; list-style: none; width: 218px !important; height: 550px; margin-top: 0px">
+							style="float: left; list-style: none; width: 218px !important; height: 575px; margin-top: 0px">
 							<ul>
 								<li class="title">
 									<div class="contain">

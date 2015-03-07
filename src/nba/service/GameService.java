@@ -275,10 +275,6 @@ public class GameService extends DatabaseService {
 		return false;
 	}
 
-	public static void main(String[] args) {
-
-	}
-
 	public List<GameData> GetGamedataByCondition(String condition) {
 		return this.gets(GameData.class, "select * from game_data where 1=1 "
 				+ condition, null);
@@ -593,6 +589,58 @@ public class GameService extends DatabaseService {
 			dil = new DayInLog();
 		}
 		team.setDil(dil);
+	}
+
+	public List<DayInLog> getDayInLogs(String category) {
+
+		List<DayInLog> dilList = new ArrayList<DayInLog>();
+
+		String sql = "";
+		if (category.equals("week")) {
+
+			List<String> dates = dateToWeek();
+
+			String date_condition = "";
+
+			for (String date : dates) {
+				date_condition = date_condition + ",'" + date + "'";
+			}
+
+			sql = "select * from day_in_log where day_in_date in ("
+					+ date_condition.substring(1) + ")";
+		}
+
+		dilList = this.gets(DayInLog.class, sql, null);
+
+		return dilList;
+	}
+
+	public List<String> dateToWeek() {
+		List<String> dates = new ArrayList<String>();
+		Calendar cal = Calendar.getInstance();
+		int now_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		Long today = new Date().getTime();
+
+		for (int i = 1; i < now_index; i++) {
+			Long temp = today - 24 * 60 * 60 * 1000 * i;
+			dates.add(sdf.format(new Date(temp)));
+		}
+		for (int i = 1; i <= (7 - now_index); i++) {
+			Long temp = today + 24 * 60 * 60 * 1000 * i;
+			dates.add(sdf.format(new Date(temp)));
+		}
+
+		dates.add(getNowDate());
+
+		return dates;
+	}
+
+	public static void main(String[] args) {
+		GameService g = new GameService();
+		g.dateToWeek();
 	}
 
 	private String getIdFromUrl(String url) {

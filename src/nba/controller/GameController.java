@@ -14,6 +14,7 @@ import nba.chart.ChartData;
 import nba.chart.Data;
 import nba.chart.Path;
 import nba.entity.Arena;
+import nba.entity.DayInLog;
 import nba.entity.Player;
 import nba.entity.Team;
 import nba.entity.User;
@@ -297,38 +298,81 @@ public class GameController {
 	public void GetChart(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		User user = accountService.getLoginUser(request);
+		String type = request.getParameter("type");
+		String category = request.getParameter("category");
+		List<ChartData> cdList = new ArrayList<ChartData>();
 
-		if (user != null) {
+		if (type.equals("team_money")) {
+			User user = accountService.getLoginUser(request);
 
-			Team team = gameService.getTeamByUser(user);
+			if (user != null) {
 
-			request.getSession().setAttribute("team", team);
+				Team team = gameService.getTeamByUser(user);
 
-			if (team != null) {
-				List<ChartData> cdList = new ArrayList<ChartData>();
-				ChartData cd = new ChartData();
+				request.getSession().setAttribute("team", team);
 
-				List<Path> pathList = new ArrayList<Path>();
-				Path path = new Path();
-				path.setClassName(".main.l1");
+				if (team != null) {
 
-				List<Data> dataList = new ArrayList<Data>();
-				Data data = new Data();
-				data.setX("2015-03-06");
-				data.setY(2000);
+					this.getTeamMoneyChart(team, category, cdList);
 
-				dataList.add(data);
-
-				path.setData(dataList);
-				pathList.add(path);
-				cd.setMain(pathList);
-
-				cdList.add(cd);
-
-				JsonTool.getJson(cdList).write(response);
+				}
 			}
 		}
+
+		JsonTool.getJson(cdList).write(response);
+	}
+
+	public List<ChartData> getTeamMoneyChart(Team team, String category,
+			List<ChartData> cdList) {
+
+		ChartData cd = new ChartData();
+		List<Path> pathList = new ArrayList<Path>();
+
+		List<DayInLog> dilList = gameService.getDayInLogs(category);
+
+		Path path_in = new Path();
+		Path path_pay = new Path();
+		Path path_profit = new Path();
+
+		path_in.setClassName(".main.l1");
+		path_pay.setClassName(".main.l2");
+		path_profit.setClassName(".main.l3");
+
+		List<Data> dataList_in = new ArrayList<Data>();
+		List<Data> dataList_pay = new ArrayList<Data>();
+		List<Data> dataList_profit = new ArrayList<Data>();
+		
+		for(DayInLog dil:dilList){
+			Data data_in = new Data();
+			data_in.setX(dil.getDay_in_date());
+			data_in.setY(dil.getArena_in());
+			
+			Data data_pay = new Data();
+			data_pay.setX(dil.getDay_in_date());
+			data_pay.setY(dil.getPay());
+			
+			Data data_profit = new Data();
+			data_profit.setX(dil.getDay_in_date());
+			data_profit.setY(dil.getProfit());
+			
+			dataList_in.add(data_in);
+			dataList_pay.add(data_pay);
+			dataList_profit.add(data_profit);
+		}
+
+		path_in.setData(dataList_in);
+		path_pay.setData(dataList_pay);
+		path_profit.setData(dataList_profit);
+		
+		pathList.add(path_in);
+		pathList.add(path_pay);
+		pathList.add(path_profit);
+		
+		cd.setMain(pathList);
+
+		cdList.add(cd);
+
+		return cdList;
 	}
 
 	@Resource
