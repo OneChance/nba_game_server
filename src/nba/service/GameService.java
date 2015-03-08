@@ -618,7 +618,8 @@ public class GameService extends DatabaseService {
 	public List<String> dateToWeek() {
 		List<String> dates = new ArrayList<String>();
 		Calendar cal = Calendar.getInstance();
-		int now_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+		
+		int now_index = (cal.get(Calendar.DAY_OF_WEEK) - 1)==0?7:(cal.get(Calendar.DAY_OF_WEEK) - 1);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 

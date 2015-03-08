@@ -9,8 +9,8 @@
 
 <figure style="height: 300px;" id="chart_table">
 	<div>
-		<a class="button_small" href="javacript:void(0);"
-			onclick="close_chart()"><i class="fa fa-close fa3x"></i> </a>
+		<i class="fa fa-close fa-2x fa-cursor-right white-i"
+			onclick="close_chart()"></i>
 	</div>
 </figure>
 
@@ -101,7 +101,7 @@
 			pos_x = e.pageX;
 			pos_y = e.pageY;
 		});
-	
+
 		$(tt).css("position", "absolute");
 		$(tt).css("left", pos_x + 10);
 		$(tt).css("top", pos_y + 10);
