@@ -272,7 +272,7 @@ public class GameService extends DatabaseService {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("HH");
 		String hour = sdf.format(new Date());
-		if (Integer.parseInt(hour) >= 11) {
+		if (Integer.parseInt(hour) >= 15) {
 			return true;
 		}
 		return false;
