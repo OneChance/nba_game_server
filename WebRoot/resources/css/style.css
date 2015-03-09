@@ -3451,9 +3451,21 @@ px
 	width: 800px;
 	height: 400px;
 	background-color: #2C3437;
-	border: 5px solid #fff;
+	border: 3px solid #fff;
 	margin-left: 25%;
 	margin-top: 100px;
+	-webkit-border-radius: 10px;
+}
+
+.alert-confirm-bg {
+	position: absolute;
+	z-index: 3;
+	width: 300px;
+	height: 150px;
+	background-color: #2C3437;
+	border: 3px solid #fff;
+	margin-left: 40%;
+	margin-top: 200px;
 	-webkit-border-radius: 10px;
 }
 
@@ -3509,4 +3521,22 @@ px
 	width: 340px;
 	padding: 10px;
 	-webkit-animation-name: flipInX;
+}
+
+
+.alert-button {
+	display: block;
+	background-color: #bf0a24;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	text-shadow: 1px 1px black;
+	text-decoration: none;
+	margin: 0 auto;
+	float: left;
+	font-size: 10px !important;
+	text-align: center;
+	width: 40px !important;
+	padding: 10px !important;
+	margin: 25 10 30 120;
 }

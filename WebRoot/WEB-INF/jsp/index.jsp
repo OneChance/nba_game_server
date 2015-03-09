@@ -63,6 +63,37 @@
 			</div>
 		</div>
 
+		<div id="confirm" class="shade alert-confirm-shade">
+			<div class="shadebg"></div>
+			<div class="alert-confirm-bg">
+				<div class="alert-confirm-text">
+					<h3 id="confirm_msg">
+
+					</h3>
+				</div>
+				<a class="confirm-button" href="javascript:void(0);"
+					onclick="confirm_yes()"><spring:message code='yes' /> </a>
+				<a class="confirm-button" href="javascript:void(0);"
+					onclick="close_confirm()"><spring:message code='no' /> </a>
+			</div>
+		</div>
+
+		<div id="alert" class="shade alert-confirm-shade">
+			<div class="shadebg"></div>
+			<div class="alert-confirm-bg">
+				<div class="alert-confirm-text">
+					<h3 id="alert_msg">
+
+					</h3>
+				</div>
+				<div>
+					<a class="alert-button" href="javascript:void(0);"
+						onclick="alert_confirm()"><spring:message code='alert_confirm' />
+					</a>
+				</div>
+			</div>
+		</div>
+
 		<div class="container">
 			<header class="ai-header">
 			<div class="ai-nav-wrap">
@@ -142,6 +173,8 @@
 	jQuery(function() {
 		$("#loading").hide();
 		$("#chart").hide();
+		$("#confirm").hide();
+		$("#alert").hide();
 		$("#mainframe").load("game/myteam/");
 	});
 

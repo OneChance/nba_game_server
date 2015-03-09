@@ -101,6 +101,15 @@
 	width: 228px;
 }
 	
+.alert-confirm-bg{
+	width: 228px;
+	margin-left: 50px;
+}
+	
+.alert-button{
+	margin: 25 10 30 85;
+}
+	
 .team_div {
 	width: 220px !important;
 	padding-top: 0px !important;

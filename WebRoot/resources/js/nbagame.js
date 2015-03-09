@@ -22,7 +22,8 @@ var update_cap = function(current_level) {
 	var update_cost = current_level * current_level * 5000
 	confirm_update_cap = confirm_update_cap
 			.replace(/cost_replace/, update_cost);
-	if (confirm(confirm_update_cap)) {
+
+	to_confirm(confirm_update_cap, function() {
 
 		$("#loading").show();
 
@@ -35,19 +36,23 @@ var update_cap = function(current_level) {
 			cache : false,
 			success : function(json) {
 				if (json.message != '') {
-					alert(json.message);
-				}
-				parent.location.reload();
+					to_alert(json.message);
+				}else{
+					parent.location.reload();
+				}	
+				
+				$("#loading").hide();
 			}
 		});
-	}
+	});
 }
 
 var update_eq = function(current_level) {
 
 	var update_cost = current_level * current_level * 5000;
 	confirm_update_eq = confirm_update_eq.replace(/cost_replace/, update_cost);
-	if (confirm(confirm_update_eq)) {
+
+	to_confirm(confirm_update_eq, function() {
 
 		$("#loading").show();
 
@@ -60,12 +65,15 @@ var update_eq = function(current_level) {
 			cache : false,
 			success : function(json) {
 				if (json.message != '') {
-					alert(json.message);
+					to_alert(json.message);
+				}else{
+					parent.location.reload();
 				}
-				parent.location.reload();
+				
+				$("#loading").hide();
 			}
 		});
-	}
+	});
 }
 
 var to_chart = function(type, player_id) {
@@ -76,4 +84,12 @@ var to_chart = function(type, player_id) {
 
 var close_chart = function() {
 	$("#chart").hide();
+}
+
+var close_confirm = function() {
+	$("#confirm").hide();
+}
+
+var alert_confirm = function() {
+	$("#alert").hide();
 }
