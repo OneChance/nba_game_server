@@ -20,16 +20,17 @@ jQuery(".options a").click(function() {
 var update_cap = function(current_level) {
 
 	var update_cost = current_level * current_level * 5000
-	confirm_update_cap = confirm_update_cap.replace(/cost_replace/, update_cost);
+	confirm_update_cap = confirm_update_cap
+			.replace(/cost_replace/, update_cost);
 	if (confirm(confirm_update_cap)) {
-		
+
 		$("#loading").show();
-		
+
 		jQuery.ajax({
 			type : "POST",
 			url : "game/update_cap/",
 			data : {
-				
+
 			},
 			cache : false,
 			success : function(json) {
@@ -47,14 +48,14 @@ var update_eq = function(current_level) {
 	var update_cost = current_level * current_level * 5000;
 	confirm_update_eq = confirm_update_eq.replace(/cost_replace/, update_cost);
 	if (confirm(confirm_update_eq)) {
-		
+
 		$("#loading").show();
-		
+
 		jQuery.ajax({
 			type : "POST",
 			url : "game/update_eq/",
 			data : {
-				
+
 			},
 			cache : false,
 			success : function(json) {
@@ -67,11 +68,12 @@ var update_eq = function(current_level) {
 	}
 }
 
-var to_chart = function(){
+var to_chart = function(type, player_id) {
 	$("#chart").show();
-	$("#chart_container").load("game/chart/");
+	$("#chart_container").load(
+			"game/chart/?type=" + type + "&player_id=" + player_id);
 }
 
-var close_chart = function(){
+var close_chart = function() {
 	$("#chart").hide();
 }

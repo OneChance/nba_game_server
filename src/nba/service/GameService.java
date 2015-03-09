@@ -16,6 +16,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
+import nba.chart.ChartData;
+import nba.chart.Data;
+import nba.chart.Path;
 import nba.entity.Arena;
 import nba.entity.DayInLog;
 import nba.entity.GameData;
@@ -278,6 +281,11 @@ public class GameService extends DatabaseService {
 	public List<GameData> GetGamedataByCondition(String condition) {
 		return this.gets(GameData.class, "select * from game_data where 1=1 "
 				+ condition, null);
+	}
+	
+	public List<GameData> GetGamedataInNum(int num,String condition) {
+		return this.gets(GameData.class, "select * from game_data where 1=1 "
+				+ condition + " LIMIT "+num , null);
 	}
 
 	/*
@@ -618,8 +626,9 @@ public class GameService extends DatabaseService {
 	public List<String> dateToWeek() {
 		List<String> dates = new ArrayList<String>();
 		Calendar cal = Calendar.getInstance();
-		
-		int now_index = (cal.get(Calendar.DAY_OF_WEEK) - 1)==0?7:(cal.get(Calendar.DAY_OF_WEEK) - 1);
+
+		int now_index = (cal.get(Calendar.DAY_OF_WEEK) - 1) == 0 ? 7 : (cal
+				.get(Calendar.DAY_OF_WEEK) - 1);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -654,5 +663,97 @@ public class GameService extends DatabaseService {
 
 	public String getNowDate() {
 		return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	}
+
+	public List<ChartData> getTeamMoneyChart(Team team, String category,
+			List<ChartData> cdList) {
+
+		ChartData cd = new ChartData();
+		List<Path> pathList = new ArrayList<Path>();
+
+		List<DayInLog> dilList = this.getDayInLogs(category);
+
+		Path path_in = new Path();
+		Path path_pay = new Path();
+		Path path_profit = new Path();
+
+		path_in.setClassName(".main.l1");
+		path_pay.setClassName(".main.l2");
+		path_profit.setClassName(".main.l3");
+
+		List<Data> dataList_in = new ArrayList<Data>();
+		List<Data> dataList_pay = new ArrayList<Data>();
+		List<Data> dataList_profit = new ArrayList<Data>();
+
+		if (dilList != null) {
+			for (DayInLog dil : dilList) {
+				Data data_in = new Data();
+				data_in.setX(dil.getDay_in_date());
+				data_in.setY(dil.getArena_in());
+
+				Data data_pay = new Data();
+				data_pay.setX(dil.getDay_in_date());
+				data_pay.setY(dil.getPay());
+
+				Data data_profit = new Data();
+				data_profit.setX(dil.getDay_in_date());
+				data_profit.setY(dil.getProfit());
+
+				dataList_in.add(data_in);
+				dataList_pay.add(data_pay);
+				dataList_profit.add(data_profit);
+			}
+
+			path_in.setData(dataList_in);
+			path_pay.setData(dataList_pay);
+			path_profit.setData(dataList_profit);
+
+			pathList.add(path_in);
+			pathList.add(path_pay);
+			pathList.add(path_profit);
+
+			cd.setMain(pathList);
+
+			cdList.add(cd);
+		}
+
+		return cdList;
+	}
+
+	public List<ChartData> getPlayerEvChart(String player_id,
+			List<ChartData> cdList) {
+
+		ChartData cd = new ChartData();
+		List<Path> pathList = new ArrayList<Path>();
+
+		List<GameData> gdList = this.GetGamedataInNum(7," and player_id="
+				+ player_id + " order by game_date desc");
+
+		Path path = new Path();
+
+		path.setClassName(".main.l2");
+
+		List<Data> dataList = new ArrayList<Data>();
+
+		if (gdList != null) {
+			for (GameData gd : gdList) {
+				Data data = new Data();
+				
+				data.setX(gd.getGame_date());
+				data.setY(gd.getEv());
+
+				dataList.add(data);
+			}
+
+			path.setData(dataList);
+
+			pathList.add(path);
+
+			cd.setMain(pathList);
+
+			cdList.add(cd);
+		}
+
+		return cdList;
 	}
 }

@@ -17,13 +17,15 @@
 
 .my-team {
 	float: left;
-	margin-left: 60px;
+	margin-left: 50px;
+	width: 95%;
 }
 
 .player-card {
 	width: 200px;
 	height: 333px;
 	list-style: none;
+	margin-left:10px;
 }
 
 .mainframe {
@@ -34,7 +36,7 @@
 
 /* CSS Document */
 /* === Misc Section === */
-body, td, th {
+body,td,th {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #666;
@@ -45,16 +47,16 @@ body {
 	text-align: center;
 }
 
-h1, h2, h3, h4, h5, ul, ol, li {
+h1,h2,h3,h4,h5,ul,ol,li {
 	margin: 0;
 	padding: 0;
 }
 
-ul, ol {
+ul,ol {
 	list-style: none;
 }
 
-a:link, a:visited, a:active {
+a:link,a:visited,a:active {
 	color: white;
 }
 
@@ -66,8 +68,8 @@ a:hover {
 	clear: both;
 }
 
-.clearfix:after, ul.quart:after, ul.third:after, ul.testimonials:after,
-	ul.planstable:after {
+.clearfix:after,ul.quart:after,ul.third:after,ul.testimonials:after,ul.planstable:after
+	{
 	content: ".";
 	display: block;
 	height: 0;
@@ -221,7 +223,7 @@ img.styled {
 	font-family: 'Istok Web', sans-serif;
 }
 
-.navigation ul li a:hover, .navigation ul li a.active, .navigation ul li a.current
+.navigation ul li a:hover,.navigation ul li a.active,.navigation ul li a.current
 	{
 	color: #111;
 	background: #fff;
@@ -335,7 +337,7 @@ iframe {
 	cursor: pointer;
 	opacity: .7;
 	-moz-opacity: .7;
-	filter: alpha(opacity =             70);
+	filter: alpha(opacity =                   70);
 	z-index: 998;
 }
 
@@ -348,11 +350,11 @@ iframe {
 	cursor: pointer;
 	opacity: .7;
 	-moz-opacity: .7;
-	filter: alpha(opacity =             70);
+	filter: alpha(opacity =                   70);
 	z-index: 998;
 }
 
-.ptables .jcarousel-next, .ptables .jcarousel-prev {
+.ptables .jcarousel-next,.ptables .jcarousel-prev {
 	top: 233px;
 }
 
@@ -523,7 +525,7 @@ ul.pricing.green>li {
 }
 
 /* Featured Pack Slide */
-.featuredpack ul.pricing>li, .featuredpack ul.pricing.green>li.highlight
+.featuredpack ul.pricing>li,.featuredpack ul.pricing.green>li.highlight
 	{
 	width: 500px !important;
 	margin-top: 30px;
@@ -568,7 +570,7 @@ ul.pricing.green>li {
 	
 }
 
-.featuredpack ul.pricing.green>li ul li.title h3, .featuredpack ul.pricing.green li.highlight ul li.title h3
+.featuredpack ul.pricing.green>li ul li.title h3,.featuredpack ul.pricing.green li.highlight ul li.title h3
 	{
 	font-size: 25px;
 	font-weight: bold;
@@ -579,7 +581,7 @@ ul.pricing.green>li {
 	line-height: 30px;
 }
 
-.featuredpack ul.pricing.green>li ul li.title h4, .featuredpack ul.pricing.green li.highlight ul li.title h4
+.featuredpack ul.pricing.green>li ul li.title h4,.featuredpack ul.pricing.green li.highlight ul li.title h4
 	{
 	font-size: 18px;
 	font-weight: normal;
@@ -599,7 +601,7 @@ ul.pricing.green>li {
 	padding-left: 30px;
 }
 
-.featuredpack ul.pricing li ul li:last-child a, .featuredpack ul.pricing li.highlight ul li:last-child a
+.featuredpack ul.pricing li ul li:last-child a,.featuredpack ul.pricing li.highlight ul li:last-child a
 	{
 	display: block;
 	width: 121px;
@@ -615,29 +617,29 @@ ul.pricing.green>li {
 }
 
 /* === Main Content Misc === */
-.content p, .bottomcontent p {
+.content p,.bottomcontent p {
 	padding: 5px 0 15px 0;
 	margin: 0;
 }
 
-.content h3, .footer h3, .bottomcontent h3 {
+.content h3,.footer h3,.bottomcontent h3 {
 	font-size: 18px;
 	font-weight: bold;
 	font-family: 'Istok Web', sans-serif;
 }
 
-.content h3, .bottomcontent h3 {
+.content h3,.bottomcontent h3 {
 	color: #444;
 }
 
-.content h4, .bottomcontent h4 {
+.content h4,.bottomcontent h4 {
 	font-size: 16px;
 	font-weight: bold;
 	font-family: 'Istok Web', sans-serif;
 	color: #418311;
 }
 
-.content h2, .bottomcontent h2 {
+.content h2,.bottomcontent h2 {
 	font-size: 24px;
 	font-weight: bold;
 	color: #222222;
@@ -701,7 +703,7 @@ p {
 	text-decoration: none;
 }
 
-.options ul li a:hover, .options ul li a.active {
+.options ul li a:hover,.options ul li a.active {
 	color: white;
 }
 
@@ -771,7 +773,7 @@ form .textarea {
 	resize: none;
 }
 
-.topbox form#member .field, .footer .field {
+.topbox form#member .field,.footer .field {
 	margin-bottom: 7px;
 }
 
@@ -812,7 +814,7 @@ form .checker div {
 	display: inline-block;
 }
 
-form .checker div button, form .checker div input {
+form .checker div button,form .checker div input {
 	background: url(images/button.png) bottom right no-repeat;
 	height: 28px;
 	display: inline-block;
@@ -914,6 +916,9 @@ form .button:hover {
 
 
 
+
+
+
  
 
 
@@ -926,7 +931,16 @@ form .button:hover {
 
 
 
+
+
+
 ul
+
+
+
+
+
+
 
 
 
@@ -974,6 +988,12 @@ li
 
 
 
+
+
+
+
+
+
 :nth-child
 
 
@@ -986,7 +1006,13 @@ li
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1023,6 +1049,12 @@ padding
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -1035,7 +1067,13 @@ padding
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1071,7 +1109,16 @@ width
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -1095,8 +1142,17 @@ width
 
 
 
+
+
+
 313
 px
+
+
+
+
+
+
 
 
 
@@ -1369,9 +1425,21 @@ ul
 
 
 
+
+
+
+
+
+
 .quart
 >
 li
+
+
+
+
+
+
 
 
 
@@ -1406,7 +1474,13 @@ li
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1443,6 +1517,12 @@ padding
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -1455,7 +1535,13 @@ padding
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1504,7 +1590,7 @@ padding
 .copyright .hold div a span em {
 	opacity: .0;
 	-moz-opacity: .0;
-	filter: alpha(opacity =             0);
+	filter: alpha(opacity =                   0);
 	font-style: normal;
 }
 
@@ -1594,7 +1680,7 @@ body#single {
 	-webkit-border-radius: 0;
 }
 
-#single ul.pricing>li h3, #single ul.pricing>li h4 {
+#single ul.pricing>li h3,#single ul.pricing>li h4 {
 	background: none;
 }
 
@@ -1666,12 +1752,12 @@ body#single {
 	border-left: 1px solid #ccc;
 }
 
-#single ul.pricing>li:last-child ul li, #single ul.pricing>li:last-child ul li:last-child
+#single ul.pricing>li:last-child ul li,#single ul.pricing>li:last-child ul li:last-child
 	{
 	border-right: 1px solid #ccc;
 }
 
-#single ul.pricing>li ul li.title, #single ul.pricing>li ul li.divider {
+#single ul.pricing>li ul li.title,#single ul.pricing>li ul li.divider {
 	border-right: 1px solid #31650b;
 	border-left: 1px solid #69a43f;
 }
@@ -1728,13 +1814,19 @@ ul.planstable li.detailscol ul li:last-child {
 	border: none !important;
 }
 
-ul.planstable>li:nth-child      (2) ul li.title h3 {
+ul.planstable>li:nth-child         (2) ul li.title h3 {
 	border-radius: 10px 0 0 0;
 	-moz-border-radius: 10px 0 0 0;
 	-webkit-border-radius: 10px 0 0 0;
 }
 
 ul
+
+
+
+
+
+
 
 
 
@@ -1771,7 +1863,13 @@ li
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1795,7 +1893,13 @@ ul
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1830,6 +1934,12 @@ li
 
 
 
+
+
+
+
+
+
 :nth-child
 
 
@@ -1842,7 +1952,13 @@ li
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1879,6 +1995,12 @@ border-top
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -1891,7 +2013,13 @@ border-top
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1916,7 +2044,13 @@ px
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1940,7 +2074,13 @@ solid
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -1975,9 +2115,15 @@ solid
 
 
 
+
+
+
+
+
+
 ;
 }
-ul.planstable>li:nth-child      (2) ul li.title h4 {
+ul.planstable>li:nth-child         (2) ul li.title h4 {
 	border-left: 1px solid #ccc;
 }
 
@@ -1989,31 +2135,31 @@ ul.planstable>li.highlight ul li.title h3 {
 	background: #444;
 }
 
-ul.planstable>li.highlight ul li:nth-child(even), ul.planstable>li.highlight ul li:nth-child(odd)
+ul.planstable>li.highlight ul li:nth-child(even),ul.planstable>li.highlight ul li:nth-child(odd)
 	{
 	background: #fff;
 	color: #222;
 }
 
-ul.planstable>li:nth-child      (2) ul li {
+ul.planstable>li:nth-child         (2) ul li {
 	border-left: 1px solid #ddd;
 }
 
-ul.four>li:nth-child      (5) ul li.title h3, ul.five>li:nth-child     
-	 (6) ul li.title h3 {
+ul.four>li:nth-child         (5) ul li.title h3,ul.five>li:nth-child     
+	    (6) ul li.title h3 {
 	border-radius: 0 10px 0 0;
 	-moz-border-radius: 0 10px 0 0;
 	-webkit-border-radius: 0 10px 0 0;
 }
 
-ul.four>li:nth-child      (5) ul li:last-child, ul.five>li:nth-child    
-	 (6) ul li:last-child {
+ul.four>li:nth-child         (5) ul li:last-child,ul.five>li:nth-child    
+	    (6) ul li:last-child {
 	border-radius: 0 0 10px 0;
 	-moz-border-radius: 0 0 10px 0;
 	-webkit-border-radius: 0 0 10px 0;
 }
 
-ul.planstable>li:nth-child      (2) ul li:last-child {
+ul.planstable>li:nth-child         (2) ul li:last-child {
 	border-radius: 0 0 0 10px;
 	-moz-border-radius: 0 0 0 10px;
 	-webkit-border-radius: 0 0 0 10px;
@@ -2091,7 +2237,7 @@ ul.planstable li ul li:last-child a {
 }
 
 /* === Meet The Team === */
-ul#team, ul#contact {
+ul#team,ul#contact {
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -2133,7 +2279,7 @@ blockquote {
 	-webkit-border-radius: 5px
 }
 
-div.twothird ul, div.third ul {
+div.twothird ul,div.third ul {
 	line-height: 22px;
 	list-style: disc;
 	padding-top: 10px;
@@ -2152,11 +2298,11 @@ div.twothird ul, div.third ul {
 	width: 288px;
 }
 
-.twothird .third, .twothird .half {
+.twothird .third,.twothird .half {
 	padding-top: 30px;
 }
 
-.twothird .half.last, .twothird div.third.last {
+.twothird .half.last,.twothird div.third.last {
 	padding-right: 0;
 }
 
@@ -2310,7 +2456,7 @@ div.quart.last {
 	text-decoration: none;
 }
 
-.blogheading small, .comment-meta a, .comment-meta, #commentform label {
+.blogheading small,.comment-meta a,.comment-meta,#commentform label {
 	color: #666;
 	font-size: 11px;
 }
@@ -2358,7 +2504,7 @@ div.quart.last {
 	padding: 2px !important;
 }
 
-.commentlist cite, .commentlist cite a {
+.commentlist cite,.commentlist cite a {
 	font-style: normal;
 }
 
@@ -2439,7 +2585,7 @@ div.quart.last {
 	background: none repeat scroll 0 0 #F5F5F5;
 }
 
-.even, .alt {
+.even,.alt {
 	border-bottom: 1px solid #DDDDDD;
 	border-top: 1px solid #DDDDDD;
 }
@@ -2637,12 +2783,14 @@ a.readon:hover {
 
 .domainlook fieldset input {
 	background: #d30830;
-	filter: progid:           DXImageTransform.Microsoft.gradient(        
-		    startColorstr=       
-		   
-		     '#01a5fc', endColorstr=           '#0069ff', GradientType=
+	filter: progid :                 DXImageTransform.Microsoft.gradient (  
 		        
-		 0);
+		       startColorstr =          
+		   
+		        '#01a5fc', endColorstr =                 '#0069ff',
+		GradientType =   
+		        
+		    0 );
 	border: 1px solid #000000;
 	font-weight: bold;
 	font-size: 14px;
@@ -2735,7 +2883,7 @@ h8 {
 	width: 100%;
 	height: 100%;
 	background: #161616 url(../images/bg.gif) top left repeat;
-	filter: alpha(opacity = 50);
+	filter: alpha(opacity =       50);
 	-moz-opacity: 0.5;
 	opacity: 0.5;
 }
@@ -2769,4 +2917,24 @@ p {
 
 .white-i {
 	color: white;
+}
+
+.chart-title {
+	width: 300px;
+	float: left;
+	text-align: left;
+}
+
+.chart-title h3 {
+	font-size: 15px;
+	color: white;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+	display: block;
+	width: 100%;
+	margin: 0;
+	text-align: left;
+	font-weight: bold;
+	padding-bottom: 0;
+	line-height: 100%;
+	padding-top: 10px;
 }

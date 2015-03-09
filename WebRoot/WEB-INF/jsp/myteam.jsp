@@ -83,7 +83,7 @@
 								:
 								<i class="fa fa-dollar"></i>${team.team_money}
 
-								<i class="fa fa-line-chart fa-cursor-right" onclick="to_chart()"></i>
+								<i class="fa fa-line-chart fa-cursor-right" onclick="to_chart('team_money')"></i>
 							</li>
 							<li>
 								<spring:message code="ev" />
