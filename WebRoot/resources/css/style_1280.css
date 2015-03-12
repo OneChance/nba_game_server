@@ -1,14 +1,17 @@
 @charset "utf-8";
 
-@media only screen and (max-width:1280px),
-only screen and (max-device-width:1280px)
-{
-.case-gallery-wrap {
-	height:600px;
-}
-.count-item { margin-left:3%; }
-
-    .ai-banner-0 .ai-banner-font {
-        background-image: url(../images/index-image/noti-1280-672.jpg);
-    }
+@media only screen and (max-width:1280px) , only screen and
+	(max-device-width:1280px) {
+	.case-gallery-wrap {
+		height: 600px;
+	}
+	.count-item {
+		margin-left: 3%;
+	}
+	.team_player_div {
+		margin-top: 50px;
+	}
+	.ai-banner-0 .ai-banner-font {
+		background-image: url(../images/index-image/noti-1280-672.jpg);
+	}
 }

@@ -164,7 +164,7 @@
 				<c:forEach items="${team_players}" var="player" varStatus="status">
 					<ul
 						class="green pricing jcarousel-list jcarousel-list-horizontal team_player_div"
-						style="width: 218px; float: left; margin-top: 10px; height: 550px">
+						style="width: 218px; float: left; height: 550px">
 						<li
 							class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"
 							jcarouselindex="2"

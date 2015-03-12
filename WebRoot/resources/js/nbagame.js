@@ -76,10 +76,13 @@ var update_eq = function(current_level) {
 	});
 }
 
-var to_chart = function(type, player_id) {
-	$("#chart").show();
+var to_chart = function(type, player_id) {	
+	$("#loading").show();
 	$("#chart_container").load(
-			"game/chart/?type=" + type + "&player_id=" + player_id);
+			"game/chart/?type=" + type + "&player_id=" + player_id,function(){
+				$("#loading").hide();
+				$("#chart").show();				
+			});
 }
 
 var close_chart = function() {
