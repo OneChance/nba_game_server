@@ -37,7 +37,8 @@
 					<option value='后卫'>
 						<spring:message code='pos_g' />
 					</option>
-				</select> <input class="fb-btn" type="button" onclick="search();"
+				</select>
+				<input class="fb-btn" type="button" onclick="search();"
 					value="<spring:message code='button_search' />">
 			</fieldset>
 		</div>
@@ -45,8 +46,9 @@
 
 	<br>
 
-	<c:forEach items="${playerList}" var="player" varStatus="status">
-		<div class="my-team">
+	<div class="my-team">
+		<c:forEach items="${playerList}" var="player" varStatus="status">
+
 			<c:if test="${not empty playerList}">
 				<ul class="green pricing jcarousel-list jcarousel-list-horizontal">
 					<li
@@ -60,26 +62,38 @@
 									<div class="spinner"
 										style="opacity: 0; transform: rotate(2160deg) scale(1, 1);"></div>
 								</div>
-								<h3>${player.player_name}</h3>
-							<li><spring:message code='player_position' />
-								:${player.pos}</li>
-							<li><spring:message code='salary' /> :${player.sal}</li>
-							<li><c:if test="${tradeAble}">
+								<h3>
+									${player.player_name}
+								</h3>
+							<li>
+								<spring:message code='player_position' />
+								:${player.pos}
+							</li>
+							<li>
+								<spring:message code='salary' />
+								:${player.sal}
+								<i class="fa fa-line-chart fa-cursor-right"
+									onclick="to_chart('player_ev','${player.player_id}')"></i>
+							</li>
+							<li>
+								<c:if test="${tradeAble}">
 									<a href="#"
 										onclick="sign_player('${player.player_id}','<spring:message code="confirm_sign"/>')"><spring:message
 											code='sign' /> </a>
-								</c:if> <c:if test="${! tradeAble}">
+								</c:if>
+								<c:if test="${! tradeAble}">
 									<h1>
 										<spring:message code="trade_able_time" />
 									</h1>
-								</c:if></li>
+								</c:if>
+							</li>
 						</ul>
 					</li>
 				</ul>
 			</c:if>
-		</div>
-	</c:forEach>
 
+		</c:forEach>
+	</div>
 </div>
 
 <script>
