@@ -47,6 +47,7 @@ public class GameController {
 					Method setM = pc.getMethod("set" + m_name, String.class);
 					setM.invoke(player, Message.getMessage(request, "no_data"));
 				}
+
 			}
 
 			// 填充签约金额
@@ -63,12 +64,10 @@ public class GameController {
 			HttpServletResponse response) throws Exception {
 
 		User user = accountService.getLoginUser(request);
-		Team team = null;
 
 		if (user != null) {
 
-			team = gameService.getTeamByUser(user);
-			team.setUsername(user.getUser_name());
+			Team team = gameService.getTeamByUser(user);
 
 			request.getSession().setAttribute("team", team);
 
@@ -82,8 +81,6 @@ public class GameController {
 					gameService.setImgSrc(playerList);
 
 					DealData(playerList, request, team);
-					
-					team.setPlayerList(playerList);
 
 					request.setAttribute("team_players", playerList);
 
@@ -94,18 +91,8 @@ public class GameController {
 			}
 		}
 
-		if(team!=null){
-			team.setTreadable(gameService.timeTradeAble());
-		}
-		
 		request.setAttribute("tradeAble", gameService.timeTradeAble());
-		
-		if(gameService.isApp(request)){
-			JsonTool jt = JsonTool.getJson(team);
-			jt.setSuccess(true);
-			jt.write(response);
-		}
- 		
+
 		return "myteam";
 	}
 

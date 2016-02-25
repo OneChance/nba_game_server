@@ -1,7 +1,5 @@
 package nba.entity;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
@@ -20,32 +18,10 @@ public class Team {
 	private Long id;
 
 	private String team_name;
-	
-	@Transient
-	private String username;
 	private String players;
 	private Long user_id;
 	private Integer team_money;
 	private Integer ev;
-	
-	@Transient
-	private List<Player> playerList;
-	
-	public List<Player> getPlayerList() {
-		return playerList;
-	}
-
-	public void setPlayerList(List<Player> playerList) {
-		this.playerList = playerList;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	@OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "team")
 	private Arena arena;
@@ -55,18 +31,6 @@ public class Team {
 
 	@Transient
 	private DayInLog dil;
-	
-	@Transient
-	private boolean treadable;
-
-	
-	public boolean isTreadable() {
-		return treadable;
-	}
-
-	public void setTreadable(boolean treadable) {
-		this.treadable = treadable;
-	}
 
 	public DayInLog getDil() {
 		return dil;

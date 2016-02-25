@@ -1,5 +1,6 @@
 package nba.controller;
 
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import nba.tool.WebUtil;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 @RequestMapping("/account")
@@ -34,22 +36,15 @@ public class AccountController {
 
 			String res = accountService.checkLogin(user);
 
-			jt = JsonTool.getJson("");
+			jt = JsonTool.getJson(res);
 
 			if (!res.equals(Code.LOGINOK)) {
-				jt.setSuccess(false);
 				jt.setMessage(Message.getMessage(request, res));
 			} else {
-				
-				if (!gameService.isApp(request)) {
-					WebUtil.setCookies(response, "loginuid", user.getId()
-							.toString());
-				}
+				WebUtil.setCookies(response, "loginuid", user.getId()
+						.toString());
 				request.getSession().setAttribute("loginu", user);
 				Team team = gameService.getTeamByUser(user);
-				user.setTeam(team);
-				jt.setData(user);
-				jt.setSuccess(true);
 				request.getSession().setAttribute("team", team);
 			}
 		} catch (Exception e) {
@@ -59,9 +54,7 @@ public class AccountController {
 			jt.setMessage(Message.getMessage(request, "login_error"));
 		}
 
-		if (gameService.isApp(request)) {
-			jt.write(response);
-		}
+		jt.write(response);
 	}
 
 	@RequestMapping("/register/")
