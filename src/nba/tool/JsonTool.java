@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.CycleDetectionStrategy;
 
 @SuppressWarnings("serial")
 public class JsonTool implements Serializable {
@@ -30,7 +32,9 @@ public class JsonTool implements Serializable {
 	 * To string
 	 */
 	public String toString() {
-		JSONObject jSONObject = JSONObject.fromObject(this);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
+		JSONObject jSONObject = JSONObject.fromObject(this,jsonConfig);
 		return jSONObject.toString();
 	}
 
@@ -93,7 +97,9 @@ public class JsonTool implements Serializable {
 			}
 			this.data = jsonArray;
 		} else if (!(data instanceof String)) {
-			this.data = JSONObject.fromObject(data);
+			JsonConfig jsonConfig = new JsonConfig();
+			jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
+			this.data = JSONObject.fromObject(data,jsonConfig);
 		} else {
 			this.data = data;
 		}

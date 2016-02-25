@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.Session;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -755,5 +757,14 @@ public class GameService extends DatabaseService {
 		}
 
 		return cdList;
+	}
+	
+	public boolean isApp(HttpServletRequest request){
+		Object device = request.getSession().getAttribute("device");
+		if(device!=null && device.equals("app")){
+			return true;
+		}
+		
+		return false;
 	}
 }

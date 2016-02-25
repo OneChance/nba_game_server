@@ -16,25 +16,38 @@
 			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
 
-		<link href="resources/css/reset.css" rel="stylesheet" type="text/css">
-		<link href="resources/css/style.css" rel="stylesheet" type="text/css">
-		<link href="resources/css/magicwall.css" rel="stylesheet"
-			type="text/css">
-		<link href="resources/css/style_1580.css" rel="stylesheet"
-			type="text/css">
-		<link href="resources/css/style_1280.css" rel="stylesheet"
-			type="text/css">
-		<link href="resources/css/style_1024.css" rel="stylesheet"
-			type="text/css">
-		<link href="resources/css/style_768.css" rel="stylesheet"
-			type="text/css">
-		<link href="resources/css/style_retina.css" rel="stylesheet"
-			type="text/css">
-		<link href="resources/css/nbagame.css" rel="stylesheet"
-			type="text/css">
-		<link rel="stylesheet" href="resources/css/font-awesome.min.css">
-		<link href="resources/css/animation.css" rel="stylesheet"
-			type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/reset.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/style.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/magicwall.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/style_1580.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/style_1280.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/style_1024.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/style_768.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/style_retina.css"
+			rel="stylesheet" type="text/css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/nbagame.css"
+			rel="stylesheet" type="text/css">
+		<link rel="stylesheet"
+			href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
+		<link
+			href="${pageContext.request.contextPath}/resources/css/animation.css"
+			rel="stylesheet" type="text/css">
 		<script>
 	var browser = navigator.appName
 	var b_version = navigator.appVersion
@@ -123,10 +136,10 @@
 			<div class="mid_wrap copyright">
 				<div class="mid_block">
 					<h2>
-						<i>ZHSTAR&nbsp;<spring:message code="menu_studio" /> </i>
+						<i>XXXXX&nbsp;</i>
 					</h2>
 					<h3>
-						<i> © 2015-2115 ZHSTAR All rights reserved.</i>
+						<i> © 2000-2000 XXXXXX All rights reserved.</i>
 					</h3>
 				</div>
 			</div>
@@ -134,9 +147,12 @@
 
 		</div>
 
-		<script type="text/javascript" src="resources/js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="resources/js/index.js"></script>
-		<script src="resources/js/nbagame.js"></script>
+		<script type="text/javascript"
+			src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript"
+			src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/nbagame.js"></script>
 
 		<script>
 	jQuery("#reg").click(function() {

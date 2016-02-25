@@ -26,8 +26,14 @@ public class GlobalFilter implements HandlerInterceptor {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
+		String device = request.getParameter("device");
+
+		if (device != null && device.equals("app")) {
+			request.getSession().setAttribute("device", "app");
+		}
+
 		if (this.isResources(handlerMethod)) {
-			
+
 		}
 
 		String local = WebUtil.getCookies(request, "nbagame_lan");
