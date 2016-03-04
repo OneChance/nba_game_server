@@ -72,8 +72,10 @@ function login(namenull, needpassword) {
 		success : function(json) {
 			if (json.message != '') {
 				to_alert(json.message);
+				$("#loading").hide();
+			} else {
+				parent.location.reload();
 			}
-			parent.location.reload();
 		}
 	});
 }
@@ -137,7 +139,7 @@ function confirm_yes() {
 }
 
 function sign_player(player_id, confirm_sign) {
-	
+
 	to_confirm(confirm_sign, function(player_id) {
 
 		$("#confirm").hide();
